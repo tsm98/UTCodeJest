@@ -32,7 +32,10 @@ export class ProfileComponent implements OnInit {
     };
 
     this.http
-      .post('http://localhost:5001/api/posts/getUserPosts', userData)
+      .post(
+        'https://nutritious-flax-squid.glitch.me/api/posts/getUserPosts',
+        userData
+      )
       .subscribe(
         (response) => {
           console.log(response);
@@ -45,18 +48,20 @@ export class ProfileComponent implements OnInit {
         }
       );
 
-    this.http.get('http://localhost:5001/api/auth/getAllUsers').subscribe(
-      (response) => {
-        console.log(response);
-        this.allUsers = response;
-        this.allUsers = this.allUsers.slice(0, 2);
-        // Handle success - maybe navigate the user or display a success message
-      },
-      (error) => {
-        console.error(error);
-        // Handle error - maybe display an error message to the user
-      }
-    );
+    this.http
+      .get('https://nutritious-flax-squid.glitch.me/api/auth/getAllUsers')
+      .subscribe(
+        (response) => {
+          console.log(response);
+          this.allUsers = response;
+          this.allUsers = this.allUsers.slice(0, 2);
+          // Handle success - maybe navigate the user or display a success message
+        },
+        (error) => {
+          console.error(error);
+          // Handle error - maybe display an error message to the user
+        }
+      );
   }
 
   viewPost(post: any) {

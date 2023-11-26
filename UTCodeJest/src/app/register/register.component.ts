@@ -56,46 +56,48 @@ export class RegisterComponent {
       };
 
       console.log(userData);
-      this.http.post('http://localhost:5001/api/users', userData).subscribe(
-        (response) => {
-          console.log(response);
-          this.userService.setUser(userData);
-          // Handle success - maybe navigate the user or display a success message
-          this.showSuccessModal();
-        },
-        (error) => {
-          console.error(error);
-          // Handle error - maybe display an error message to the user
-          if (error.status === 400) {
-            console.log('Is 400 error');
+      this.http
+        .post('https://nutritious-flax-squid.glitch.me/api/users', userData)
+        .subscribe(
+          (response) => {
+            console.log(response);
+            this.userService.setUser(userData);
+            // Handle success - maybe navigate the user or display a success message
+            this.showSuccessModal();
+          },
+          (error) => {
+            console.error(error);
+            // Handle error - maybe display an error message to the user
+            if (error.status === 400) {
+              console.log('Is 400 error');
 
-            // Handle 400 error
-            if (error.error && Array.isArray(error.error.errors)) {
-              // If the error contains a list of errors, display the first one (or all if needed)
-              if (error.error.errors.length == 1) {
-                this.errorMessage += error.error.errors[0].msg;
-              } else {
-                for (let text of error.error.errors) {
-                  this.errorMessage += text.msg + '; ';
+              // Handle 400 error
+              if (error.error && Array.isArray(error.error.errors)) {
+                // If the error contains a list of errors, display the first one (or all if needed)
+                if (error.error.errors.length == 1) {
+                  this.errorMessage += error.error.errors[0].msg;
+                } else {
+                  for (let text of error.error.errors) {
+                    this.errorMessage += text.msg + '; ';
+                  }
                 }
+                this.showErrorModal();
+              } else {
+                // Generic error message for bad request
+                this.errorMessage =
+                  'Failed to register. Please check your details and try again.';
+                this.showErrorModal();
               }
+            } else if (error.status === 500) {
+              // Handle 500 error
+              this.errorMessage =
+                'Server error occurred. Please try again later.';
               this.showErrorModal();
             } else {
-              // Generic error message for bad request
-              this.errorMessage =
-                'Failed to register. Please check your details and try again.';
-              this.showErrorModal();
+              console.error(error);
             }
-          } else if (error.status === 500) {
-            // Handle 500 error
-            this.errorMessage =
-              'Server error occurred. Please try again later.';
-            this.showErrorModal();
-          } else {
-            console.error(error);
           }
-        }
-      );
+        );
     }, 1000);
   }
 

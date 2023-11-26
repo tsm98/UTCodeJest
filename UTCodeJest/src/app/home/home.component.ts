@@ -46,7 +46,10 @@ export class HomeComponent implements OnInit {
     };
 
     this.http
-      .post('http://localhost:5001/api/posts/getUserPosts', userData)
+      .post(
+        'https://nutritious-flax-squid.glitch.me/api/posts/getUserPosts',
+        userData
+      )
       .subscribe(
         (response) => {
           console.log(response);
@@ -62,7 +65,10 @@ export class HomeComponent implements OnInit {
 
   getAllPosts(userForPosts: any) {
     this.http
-      .post('http://localhost:5001/api/posts/getAllPosts', userForPosts)
+      .post(
+        'https://nutritious-flax-squid.glitch.me/api/posts/getAllPosts',
+        userForPosts
+      )
       .subscribe(
         (response) => {
           console.log(response);
@@ -123,17 +129,19 @@ export class HomeComponent implements OnInit {
       };
       console.log(userData.file);
 
-      this.http.post('http://localhost:5001/api/posts', userData).subscribe(
-        (response) => {
-          console.log(response);
-          this.closePostModal();
-          this.showSuccessModal();
-          this.getAllPosts(this.userForPosts);
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
+      this.http
+        .post('https://nutritious-flax-squid.glitch.me/api/posts', userData)
+        .subscribe(
+          (response) => {
+            console.log(response);
+            this.closePostModal();
+            this.showSuccessModal();
+            this.getAllPosts(this.userForPosts);
+          },
+          (error) => {
+            console.error(error);
+          }
+        );
     }, 1000);
   }
 

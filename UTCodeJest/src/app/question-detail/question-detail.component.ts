@@ -47,7 +47,10 @@ export class QuestionDetailComponent {
       };
 
       this.http
-        .post('http://localhost:5001/api/posts/comment', newComment)
+        .post(
+          'https://nutritious-flax-squid.glitch.me/api/posts/comment',
+          newComment
+        )
         .subscribe(
           (response) => {
             console.log(response);
