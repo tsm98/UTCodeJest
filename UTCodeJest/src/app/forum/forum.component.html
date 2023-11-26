@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home Page</title>
+
+  <!-- Font: Montserrat, Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <style>
+    /* CSS Style Sheet */
+
+    /* NAV BAR */
+    body {
+      background-color: #ededf0;
+    }
+
+    .navbar {
+      background-color: #fffbfc;
+      border-bottom: none;
+      /* Hide border-bottom by default */
+    }
+
+    /* Show border-bottom when scrolled */
+    .navbar.navbar-border {
+      border-bottom: 1px solid #ceced2;
+    }
+
+    .navbar-brand {
+      border-color: #ceced2;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      text-align: left;
+      margin: 0 auto;
+      font-family: "montserrat", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      /* font-size: 24px; */
+      display: flex;
+      align-items: center;
+      margin-left: 20px;
+    }
+
+    .navbar-brand img {
+      margin-right: 5px;
+      /* Adjust the margin as needed */
+    }
+
+    .btn-primary {
+      background-color: #e5e5e9;
+      border-color: #e5e5e9;
+      color: #0a192b;
+      font-family: "montserrat", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 16px;
+    }
+
+    .btn-link {
+      color: #D40839;
+      font-family: "montserrat", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 14px;
+    }
+
+    .container {
+      width: 1000px;
+      height: auto;
+      margin-top: 50px;
+      margin-bottom: 10px;
+      font-family: "montserrat", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 16px;
+    }
+
+    .form-label {
+      font-family: "montserrat", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .form-box {
+      border: 1px solid #ced4da;
+      background-color: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      height: 618px;
+      width: 478px;
+      font-family: "montserrat", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .bottom-images {
+      justify-content: space-between;
+      background-image: url("pattern3.png");
+      background-repeat: repeat;
+      height: 200px;
+      margin-top: -25px;
+      background-size: cover;
+      font-family: "montserrat", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .label {
+      color: #999797;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    /* Additional Styles */
+    .navbar .container-fluid {
+      justify-content: space-between;
+      display: flex;
+    }
+
+    /* General Search Bar Styles */
+    .search-bar {
+      font-family: "roboto", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      flex-grow: 1;
+      /* Allow the search bar to take up available space */
+      width: 47%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      background-color: white;
+      border: 1px solid #ced4da;
+      border-radius: 20px;
+      padding: 6px 15px;
+      margin-left: 300px;
+    }
+
+    .search-bar input[type="search"]::placeholder {
+      color: #bbb !important;
+    }
+
+    .search-bar input[type="search"] {
+      border: none;
+      outline: none;
+      width: 100%;
+      /* Full width of its parent */
+      padding: 0 15px;
+      /* Padding for text inside input, adjust as needed */
+      padding-left: 40px;
+      box-sizing: border-box;
+      /* Include padding and border in the element's total width and height */
+    }
+
+    input.nosubmit {
+      width: auto;
+      /* Let it be flexible instead of a fixed percentage */
+      border: none;
+      padding: 1px 1px 1px 40px;
+      background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat 13px center;
+    }
+
+    form.nosubmit {
+      margin-left: 0;
+      padding: 0;
+      border: none;
+      width: 100%;
+      /* Make sure the form takes the full width of its parent */
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .search-bar {
+        width: auto;
+        /* Let the width be auto to take up necessary space */
+        padding: 0;
+        flex-grow: 1;
+        /* Allow the search bar to grow as needed */
+      }
+
+      .navbar .container-fluid {
+        flex-direction: auto;
+        align-items: stretch;
+        /* Ensure full width is used */
+      }
+
+      /* This ensures that both elements are treated equally in the flexbox ordering */
+      .navbar-collapse,
+      .search-bar {
+        order: 0;
+        /* Set to the same order to appear next to each other */
+      }
+
+      /* Adjust the padding of the search input to fit within the search bar */
+      .search-bar input {
+        padding: 1px 1px 1px 40px;
+        /* Adjust padding to make room for the icon */
+      }
+    }
+
+    .nav-item {
+      font-family: "montserrat", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      margin-right: 55px;
+    }
+
+    .nav-profile {
+      margin-right: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar {
+      overflow-x: hidden;
+    }
+
+    <!-- MY UPDATES-->.float-container {
+      display: flex;
+      position: relative;
+      flex-direction: row;
+      /* default value: items will be placed from left to right */
+      /* flex-wrap: wrap; allows the items to wrap onto multiple lines if necessary */
+      flex-wrap: nowrap;
+      /* Ensure blocks don't wrap to the next line */
+      justify-content: space-between;
+      /* Spacing between the two blocks */
+      align-items: flex-start;
+    }
+
+    @media (max-width: 768px) {
+      .float-container {
+        flex-direction: column;
+      }
+    }
+
+    .float-child {
+      float: left;
+      margin-right: 20px;
+      /* Adjust as necessary for spacing between floated elements */
+    }
+
+    /* Clearfix to clear floated elements */
+    .float-container::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Media Query for smaller screens */
+    @media (max-width: 768px) {
+      .block {
+        width: 30%;
+        /* Assuming the block takes more space on smaller screens */
+      }
+
+      .block2,
+      .block3,
+      .block4 {
+        width: 70%;
+        /* The remaining space for block3 and block4 */
+        margin-left: 30%;
+        /* Aligned with the new width of block */
+      }
+    }
+
+    /* MY UPDATES */
+    .block {
+      font-family: "montserrat", sans-serif;
+      font-size: 24px;
+      width: 25%;
+      position: relative;
+      background-color: #fffbfc;
+      padding: 10px 20px;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+      margin-left: 36px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      width: calc(22% - 20px);
+      /* Subtract margin from width */
+      border: 1px solid #ceced2;
+    }
+
+    .inner-block {
+      font-family: "montserrat", sans-serif;
+      font-size: 15px;
+      width: 105%;
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      text-align: center;
+      margin-top: -5px;
+    }
+
+    .inner-block>.update_block:first-child {
+      margin-top: 10px;
+      /* Adjust this value to your preference */
+    }
+
+    .update_block {
+      font-family: "montserrat", sans-serif;
+      width: 100%;
+      border: 1px solid #ced4da;
+      background-color: rgba(206, 206, 210, 0.12);
+      display: flex;
+      border-radius: 12px;
+      flex-direction: column;
+      align-self: center;
+    }
+
+    .ptitle {
+      font-family: "roboto", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 12px;
+      color: rgba(10, 25, 43, 0.65);
+      margin-bottom: 0px;
+    }
+
+    hr {
+      background-color: #959595;
+      width: 100%;
+      margin-top: 12px;
+    }
+
+    .btn-show_more {
+      font-family: "montserrat", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 15px;
+      color: #000000;
+      /* Set the default font color */
+      border: none;
+      /* Remove the border */
+      margin-top: -6px;
+      margin-bottom: -5px;
+    }
+
+    .btn-show_more:focus,
+    .btn-show_more:active {
+      color: #ff0000;
+      /* Change the font color on click */
+      outline: none;
+      /* Remove the outline when the button is active */
+      border: none;
+      /* Remove the border when the button is active */
+    }
+
+    .sm {
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    .nav-link-button {
+      position: relative;
+      border: #000000;
+      background: #000000;
+      color: #ffffff;
+      padding: 8px 20px;
+      border-radius: 9999px;
+    }
+
+    /*  ALL DISCUSSION  */
+    .block2 {
+      width: 75%;
+      margin-left: 25%;
+      position: relative;
+      background-color: #fffbfc;
+      padding: 10px 20px;
+      border-radius: 12px;
+      margin-top: 20px;
+      margin-bottom: 165px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      width: calc(75% - 30px);
+      /* Subtract margin from width */
+      border: 1px solid #ceced2;
+      font-family: "montserrat", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 24px;
+      flex-direction: row;
+      display: flex;
+      justify-content: space-between;
+      /* This will add space between each discussions_block */
+      flex-wrap: wrap;
+      /* This will allow the items to wrap to the next line if there's not enough space */
+    }
+
+    .discussions_block {
+      color: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      border: 1px solid var(--border, #ceced2);
+      background: rgba(229, 229, 233, 0.4);
+      display: flex;
+      padding: 12px 12px;
+      align-items: center;
+      gap: 12px;
+      align-self: stretch;
+      margin-top: 8px;
+      margin-bottom: 5px;
+      width: calc(50% - 8px);
+      /* setting the width to roughly a third minus some margin for space between */
+    }
+
+    .discussion_names {
+      display: flex;
+      align-items: center;
+      /* This will vertically center align the image and the text */
+      justify-content: flex-start;
+      /* This will align the items to the left */
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    .title_container {
+      display: flex;
+      justify-content: space-between;
+      /* This will push the items to the edges */
+      align-items: center;
+      /* This will align the items vertically centered */
+      width: 100%;
+      /* Make sure it stretches to the full width of its parent */
+      margin-top: 5px;
+      letter-spacing: 2px;
+    }
+
+    .custom-line {
+      width: 100%;
+      /* Ensure it spans the full width */
+      border-top: 1px solid #959595;
+      /* Add a border-top to simulate the horizontal line */
+      align-items: center;
+      margin: 10px 0;
+      margin-bottom: 13px;
+    }
+
+    .filter {
+      background: #e5e5e9;
+      /* Set the default state background color */
+      /* ... other styles ... */
+    }
+
+    .filter:hover {
+      background-color: #dad9dd !important;
+      /* Hover state background color */
+    }
+
+    /* For responsive images */
+    .inner_discussions_block img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      align-items: center;
+      margin-top: auto;
+      border-radius: 10px;
+    }
+
+    .inner_discussions_block {
+      display: flex;
+      flex-direction: column;
+      /* Stack children vertically */
+      align-items: flex-start;
+      /* Align children to the start of the cross axis */
+      font-weight: 400;
+      font-size: 20px;
+    }
+
+    .discussion_title {
+      font-weight: 600;
+      font-size: 22px;
+      margin-left: 0;
+      /* Remove any margin to align with the start of the block */
+      align-self: flex-start;
+      /* Align to the start of the main axis if needed */
+    }
+  </style>
+</head>
+<app-navbar></app-navbar>
+
+<body>
+  <div class="float-container">
+    <!--My Updates-->
+    <div class="block float-child" style="position: fixed">
+      <div class="title_container">MY UPDATES</div>
+      <hr />
+      <div class="inner-block">
+        Questions I Asked
+        <button class="update_block btn btn-light mb-2">
+          <img src="assets/red_dot.png" width="10" height="10" style="align-items: left; margin-top: 5px" alt="red dot"/>
+          <p style="
+                text-align: left;
+                font-weight: 600;
+                margin-top: 5px;
+                margin-bottom: 5px;
+              ">
+            Problems with num()
+          </p>
+          <p class="ptitle">Asked 3 days ago . 3 new responses</p>
+        </button>
+
+        <button class="update_block btn btn-light mb-2">
+          <img src="assets/red_dot.png" width="10" height="10" style="float: left; margin-top: 5px" alt="red dot" />
+          <p style="
+                text-align: left;
+                font-weight: 600;
+                margin-top: 5px;
+                margin-bottom: 5px;
+              ">
+            Problems with num()
+          </p>
+          <p class="ptitle">Asked 3 days ago . 3 new responses</p>
+        </button>
+        <span class="sm"></span>
+        <button class="btn btn-show_more show-more-btn">
+          Show more
+          <img src="assets/showmore-Icon.png" alt="Logo" width="24" height="24"alt="showmore-Icon" />
+        </button>
+      </div>
+      <hr />
+
+      <div class="inner-block">
+        Questions I Followed
+        <button class="update_block btn btn-light mb-2">
+          <img src="assets/red_dot.png" width="10" height="10" style="align-items: left; margin-top: 5px" alt="red dot" />
+          <p style="
+                text-align: left;
+                font-weight: 600;
+                margin-top: 5px;
+                margin-bottom: 5px;
+              ">
+            Problems with num()
+          </p>
+          <p class="ptitle">Asked 3 days ago . 3 new responses</p>
+        </button>
+
+        <button class="update_block btn btn-light mb-2">
+          <img src="assets/red_dot.png" width="10" height="10" style="float: left; margin-top: 5px" alt="red dot" />
+          <p style="
+                text-align: left;
+                font-weight: 600;
+                margin-top: 5px;
+                margin-bottom: 5px;
+              ">
+            Problems with num()
+          </p>
+          <p class="ptitle">Asked 3 days ago . 3 new responses</p>
+        </button>
+        <span class="sm"></span>
+        <button class="btn btn-show_more show-more-btn" style="margin-bottom: 0px">
+          Show more
+          <img src="assets/showmore-Icon.png" alt="Logo" width="24" height="24"alt="red dot"/>
+        </button>
+      </div>
+    </div>
+
+    <div class="block2 float-child">
+      <div class="title_container">
+        ALL DISCUSSIONS
+        <button class="filter btn btn-light" style="font-size: 14px; border-radius: 10px">
+          View All
+        </button>
+      </div>
+      <hr class="custom-line" />
+      <button class="discussions_block btn btn-light mb-2" routerLink="/forum-detail">
+        <div class="inner_discussions_block">
+          <img src="assets/bootstrap.png" alt="Logo" width="500" height="197" style="margin-bottom: 8px" alt="bootstrap_post" />
+          <h5 class="discussion_title" style="margin-left: 5px">
+            Bootstrap Alternatives 2023
+          </h5>
+          <div class="discussion_names">
+            <img src="assets/profile3.png" width="40" height="40" style="margin-right: 10px" alt="profile_pic" />Eren Jaeger
+          </div>
+        </div>
+      </button>
+
+      <button class="discussions_block btn btn-light mb-2">
+        <div class="inner_discussions_block">
+          <img src="assets/amazon.png" alt="Logo" width="500" height="197" style="margin-bottom: 8px" alt="amazon_post"/>
+          <h5 class="discussion_title" style="margin-left: 5px">Amazon</h5>
+          <div class="discussion_names">
+            <img src="assets/david.png" width="40" height="40" style="margin-right: 10px" alt="profile_pic"/>David Chang
+          </div>
+        </div>
+      </button>
+
+      <button class="discussions_block btn btn-light mb-2" routerLink="/forum-detail">
+        <div class="inner_discussions_block">
+          <img src="assets/bootstrap.png" alt="Logo" width="500" height="197" style="margin-bottom: 8px" alt="bootstrap_post"  />
+          <h5 class="discussion_title" style="margin-left: 5px">
+            Bootstrap Alternatives 2023
+          </h5>
+          <div class="discussion_names">
+            <img src="assets/profile3.png" width="40" height="40" style="margin-right: 10px" alt="profile_pic"/>Eren Jaeger
+          </div>
+        </div>
+      </button>
+
+      <button class="discussions_block btn btn-light mb-2">
+        <div class="inner_discussions_block">
+          <img src="assets/amazon.png" alt="Logo" width="500" height="197" style="margin-bottom: 8px" alt="amazon_post" />
+          <h5 class="discussion_title" style="margin-left: 5px">Amazon</h5>
+          <div class="discussion_names">
+            <img src="assets/david.png" width="40" height="40" style="margin-right: 10px"alt="profile_pic" />David Chang
+          </div>
+        </div>
+      </button>
+
+      <button class="discussions_block btn btn-light mb-2" routerLink="/forum-detail">
+        <div class="inner_discussions_block">
+          <img src="assets/bootstrap.png" alt="Logo" width="500" height="197" style="margin-bottom: 8px" alt="bootstrap_post"/>
+          <h5 class="discussion_title" style="margin-left: 5px">
+            Bootstrap Alternatives 2023
+          </h5>
+          <div class="discussion_names">
+            <img src="assets/profile3.png" width="40" height="40" style="margin-right: 10px"  alt="profile_pic"/>Eren Jaeger
+          </div>
+        </div>
+      </button>
+
+      <button class="discussions_block btn btn-light mb-2">
+        <div class="inner_discussions_block">
+          <img src="assets/amazon.png" alt="Logo" width="500" height="197" style="margin-bottom: 8px" alt="amazon_post"/>
+          <h5 class="discussion_title" style="margin-left: 5px">Amazon</h5>
+          <div class="discussion_names">
+            <img src="assets/david.png" width="40" height="40" style="margin-right: 10px" alt="profile_pic"/>David Chang
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    window.onscroll = function () {
+      addNavbarBorder();
+    };
+
+    function addNavbarBorder() {
+      var navbar = document.querySelector(".navbar");
+      if (window.pageYOffset > 0) {
+        navbar.classList.add("navbar-border");
+      } else {
+        navbar.classList.remove("navbar-border");
+      }
+    }
+  </script>
+</body>
+
+</html>

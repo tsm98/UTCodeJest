@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Login</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      crossorigin="anonymous"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <style>
+      body {
+        background-color: #fffbfc;
+      }
+
+      .navbar {
+        background-color: #fffbfc;
+        height: auto;
+        padding-top: 25px;
+        padding-bottom: 25px;
+        padding-left: 21px;
+        padding-right: 21px;
+      }
+
+      .navbar-brand {
+        background-color: #fffbfc;
+        border-color: #ceced2;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        text-align: center;
+        margin-bottom: 14px;
+        margin-top: 14px;
+        font-family: "montserrat", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 24px;
+      }
+
+      .btn-primary {
+        background-color: #e5e5e9;
+        border-color: #e5e5e9;
+        color: #0a192b;
+        font-family: "montserrat", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 16px;
+      }
+
+      .btn-primary:hover {
+        background-color: #ebebef;
+        border-color: #ebebef;
+        color: #0a192b;
+        font-family: "montserrat", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 16px;
+      }
+
+      .btn-link {
+        color: #D40839;
+        font-family: "montserrat", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 14px;
+      }
+
+      .btn-link:hover {
+        color: #D40839;
+        font-family: "montserrat", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 14px;
+      }
+
+      .container {
+        width: 1000px;
+        height: auto; /* Change the height to your desired value */
+        margin-top: 50px;
+        margin-bottom: 10px;
+        font-family: "montserrat", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 16px;
+      }
+
+
+      .form-label {
+        font-family: "montserrat", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      .form-box {
+        border: 1px solid #ced4da;
+        background-color: #ffffff;
+        border-radius: 12px;
+        padding: 20px;
+        height: 100%;
+        width: 478px;
+        font-family: "montserrat", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      .bottom-images {
+        justify-content: space-between;
+        background-image: url("assets/pattern3.png");
+        background-repeat: repeat;
+        height: 200px;
+        margin-top: 112px;
+        background-size: cover;
+        font-family: "montserrat", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      .label {
+        color: #999797;
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+
+      input::placeholder {
+        color: #999797;
+        font-family: "roboto";
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            alt="Logo"
+            class="d-inline-block align-text-top"
+            height="24"
+            src="assets/logo.png"
+            width="42"
+          />
+          UTCodeJest
+        </a>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+          <div class="form-box">
+            <div class="mb-3 text-center">
+              <h2 style="margin-bottom: 32px; margin-top: 32px">Login</h2>
+            </div>
+            <form>
+              <div class="mb-3">
+                <label class="form-label" for="username">Email</label>
+                <input
+                  [(ngModel)]="userName"
+                  class="form-control"
+                  id="username"
+                  name="inputValue0"
+                  placeholder="Username"
+                  required=""
+                  type="text"
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="password">Password</label>
+                <input
+                  [(ngModel)]="password"
+                  class="form-control"
+                  id="password"
+                  name="inputValue1"
+                  placeholder="Password"
+                  required=""
+                  type="password"
+                />
+              </div>
+              <div class="mb-3" style="margin-bottom: 32px">
+                <button
+                  class="btn btn-primary w-100"
+                  (click)="loginUser()"
+                  type="submit"
+                >
+                  LOG IN
+                </button>
+              </div>
+              <div class="text-center" style="margin-bottom: 32px">
+                <p style="font-size: 16px">
+                  Not on UTCodeJest yet?<button
+                    class="btn btn-link"
+                    type="button"
+                    routerLink="/register"
+                  >
+                    Sign up here!
+                  </button>
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-images"></div>
+    <!-- Bootstrap Bundle with Popper -->
+    <script
+      crossorigin="anonymous"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    ></script>
+  </body>
+</html>
+
+
+
+<!-- Error Modal -->
+<div
+  class="modal fade"
+  id="errorModal"
+  tabindex="-1"
+  aria-labelledby="errorModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="errorModalLabel">Error</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click)="closeErrorModal()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        {{ errorMessage }}
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="closeErrorModal()"
+          data-dismiss="modal"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Success Modal -->
+<div
+  class="modal fade"
+  id="successModal"
+  tabindex="-1"
+  aria-labelledby="successModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="successModalLabel">Success</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-dismiss="modal"
+          aria-label="Close"
+          id="closeModal"
+          (click)="closeSuccessModal()"
+        ></button>
+      </div>
+      <div class="modal-body">Login successful!</div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-success"
+          (click)="closeSuccessModal()"
+          data-dismiss="modal"
+        >
+          Continue
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

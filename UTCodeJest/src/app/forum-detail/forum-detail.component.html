@@ -1,0 +1,960 @@
+<p>forum-detail works!</p>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Question_page</title>
+
+    <!-- Font: Montserrat, Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+    <style>
+
+        /* CSS Style Sheet */
+
+
+        /* NAV BAR */
+        body {
+            margin-top: 50px;
+            background-color: #EDEDF0;
+        }
+
+        .navbar {
+            background-color: #FFFBFC;
+            border-bottom: none; /* Hide border-bottom by default */
+        }
+
+        /* Show border-bottom when scrolled */
+        .navbar.navbar-border {
+            border-bottom: 1px solid #CECED2;
+        }
+
+        .navbar-brand {
+            border-color: #CECED2;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            text-align: left;
+            margin: 0 auto;
+            font-family: "montserrat", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            /* font-size: 24px; */
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .navbar-brand img {
+            margin-right: 5px; /* Adjust the margin as needed */
+        }
+        
+        .btn-primary {
+            background-color: #E5E5E9;
+            border-color: #E5E5E9;
+            color: #0A192B;
+            font-family: "montserrat", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 16px;
+        }
+
+        .btn-link {
+            color:#D40839;
+            font-family: "montserrat", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 14px;
+        }
+
+        .container {
+            width: 1000px;
+            height: auto;
+            margin-top: 50px;
+            margin-bottom: 10px;
+            font-family: "montserrat", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 16px;
+        }
+
+        .form-label{
+            font-family: "montserrat", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .form-box {
+            border: 1px solid #ced4da;
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            padding: 20px;
+            height:618px;
+            width:478px;
+            font-family: "montserrat", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+        
+        .bottom-images {
+            justify-content: space-between;
+            background-image: url('pattern3.png');
+            background-repeat: repeat;
+            height: 200px;
+            margin-top: -25px;
+            background-size: cover;
+            font-family: "montserrat", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .label{
+            color: #999797;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        /* Additional Styles */
+        .navbar .container-fluid {
+            justify-content: space-between;
+            display: flex;
+        }
+
+        /* General Search Bar Styles */
+        .search-bar {
+            font-family: "roboto", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            flex-grow: 1; /* Allow the search bar to take up available space */
+            width: 47%; 
+            position: relative;
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border: 1px solid #ced4da;
+            border-radius: 20px;
+            padding: 6px 15px;
+            margin-left: 300px;
+        }
+
+        .search-bar input[type="search"]::placeholder {
+            color: #bbb !important;
+        }
+
+        .search-bar input[type="search"] {
+            border: none;
+            outline: none;
+            width: 100%; /* Full width of its parent */
+            padding: 0 15px; /* Padding for text inside input, adjust as needed */
+            padding-left: 40px; 
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+
+        input.nosubmit {
+            width: auto; /* Let it be flexible instead of a fixed percentage */
+            border: none;
+            padding: 1px 1px 1px 40px;
+            background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat 13px center;
+        }
+
+        form.nosubmit {
+            margin-left: 0;
+            padding: 0;
+            border: none;
+            width: 100%; /* Make sure the form takes the full width of its parent */
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .search-bar {
+                width: auto; /* Let the width be auto to take up necessary space */
+                padding: 0;
+                flex-grow: 1; /* Allow the search bar to grow as needed */
+            }
+
+            .navbar .container-fluid {
+                flex-direction: auto;
+                align-items: stretch; /* Ensure full width is used */
+            }
+
+            /* This ensures that both elements are treated equally in the flexbox ordering */
+            .navbar-collapse,
+            .search-bar {
+                order: 0; /* Set to the same order to appear next to each other */
+            }
+
+            /* Adjust the padding of the search input to fit within the search bar */
+            .search-bar input {
+                padding: 1px 1px 1px 40px; /* Adjust padding to make room for the icon */
+            }
+        }
+
+        .nav-item {
+            font-family: "montserrat", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            margin-right: 70px;
+        }
+
+        .nav-profile {
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar {
+            overflow-x: hidden;
+        }
+
+        .nav-link-button {
+            position: relative;
+            border:  #000000;
+            background: #000000;
+            color: #FFFFFF;
+            padding: 8px 20px; 
+            border-radius: 9999px; 
+        }
+
+        .nav-link{
+            position: relative;
+            color: #FFFFFF;
+            padding: 8px 20px; 
+
+        }
+
+
+        <!--  MY UPDATES-->
+        .float-container {
+            display: flex;
+            position: relative;
+            flex-direction: row; /* default value: items will be placed from left to right */
+            /* flex-wrap: wrap; allows the items to wrap onto multiple lines if necessary */
+            flex-wrap: nowrap; /* Ensure blocks don't wrap to the next line */
+            justify-content: space-between; /* Spacing between the two blocks */
+            align-items: flex-start;
+        }
+        
+        @media (max-width: 768px) {
+            .float-container {
+                flex-direction: column;
+            }
+        }
+
+        .float-child {
+            float: left;
+            margin-right: 20px;  /* Adjust as necessary for spacing between floated elements */
+        }
+
+        /* Clearfix to clear floated elements */
+        .float-container::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Media Query for smaller screens */
+        @media (max-width: 768px) {
+            .block {
+                width: 30%; /* Assuming the block takes more space on smaller screens */
+            }
+            .block2, .block3 {
+                width: 50%; /* The remaining space for block3 and block4 */
+                margin-left: 30%; /* Aligned with the new width of block */
+            }
+            .block4 {
+                width: 20%;
+                margin-left: 30%; /* Aligned with the new width of block */
+            }
+
+            .topquestion_block {
+                flex-direction: column; /* Stack the buttons vertically */
+            }
+        }
+        
+
+        /* MY UPDATES */
+        .block {
+            font-family: "montserrat", sans-serif;
+            font-size: 24px;
+            width: 25%;
+            position: relative;
+            background-color: #FFFBFC; 
+            padding: 10px 20px; 
+            border-radius: 12px; 
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+            margin-left: 36px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            width: calc(22% - 20px); /* Subtract margin from width */
+            border: 1px solid #CECED2;
+        }
+
+        .inner-block {
+            font-family: "montserrat", sans-serif;
+            font-size: 15px;
+            width: 105%;
+            display: flex;
+            flex-direction: column;
+            align-self: center;
+            text-align: center;
+            margin-top: -5px;
+        }   
+
+        .inner-block > .update_block:first-child {
+            margin-top: 10px; /* Adjust this value to your preference */
+        }
+
+        .update_block{
+            font-family: "montserrat", sans-serif;
+            width: 100%;
+            border: 1px solid #ced4da;
+            background-color: rgba(206, 206, 210, 0.12); 
+            display: flex;
+            border-radius: 12px;
+            flex-direction: column;
+            align-self: center;
+        } 
+
+        .ptitle{
+            font-family: "roboto", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 12px;
+            color:rgba(10, 25, 43, 0.65);
+            margin-bottom: 0px;
+        }
+
+        hr{
+            background-color: #959595;
+            width: 100%;
+            margin-top: 12px;
+        }
+
+        .btn-show_more {
+            font-family: "montserrat", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 15px;
+            color: #000000; /* Set the default font color */
+            border: none; /* Remove the border */
+            margin-top: -6px;
+            margin-bottom: -5px;
+        }
+
+        .btn-show_more:focus,
+        .btn-show_more:active {
+            color: #FF0000; /* Change the font color on click */
+            outline: none; /* Remove the outline when the button is active */
+            border: none; /* Remove the border when the button is active */
+        }
+
+        .sm{
+            text-align: center;
+            margin-top: 8px;
+        }
+
+
+
+        /*   Question Details   */
+        .block3 {
+            width: 55%;
+            margin-left: 25%;
+            position: relative;
+            background-color: #FFFBFC; 
+            padding: 10px 20px; 
+            border-radius: 12px; 
+            margin-top: 20px; 
+            margin-bottom: 155px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            width: calc(55% - 30px); /* Subtract margin from width */
+            border: 1px solid #CECED2;
+            font-family: "montserrat", sans-serif;
+            font-weight: 400px;
+            font-style: normal;
+            font-size: 24px;
+        }
+
+        .title_container {
+            display: flex;
+            justify-content: space-between; /* This will push the items to the edges */
+            align-items: center; /* This will align the items vertically centered */
+            width: 100%; /* Make sure it stretches to the full width of its parent */
+            margin-top: 5px;
+            letter-spacing: 2px;
+        }
+
+        .title_container2 {
+            display: flex;
+            justify-content: space-between; /* This will push the items to the edges */
+            align-items: center; /* This will align the items vertically centered */
+            width: 100%; /* Make sure it stretches to the full width of its parent */
+            margin-top: 5px;
+        }
+
+        .custom-line {
+            width: 100%; /* Ensure it spans the full width */
+            border-top: 1px solid #959595;  /* Add a border-top to simulate the horizontal line */
+            align-items: center;
+            margin: 10px 0;
+            margin-bottom: 13px;
+        }
+
+        .questions_block{
+            color: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            border: 1px solid var(--border, #CECED2);
+            background: rgba(229, 229, 233, 0.40);
+            display: flex;
+            padding: 5px 12px;
+            align-items: center;
+            gap: 12px;
+            align-self: stretch;
+            margin-top: 8px;
+            margin-bottom: 5px;
+            flex-direction: column;
+        }
+
+        .inner_questions_block{
+            font-family: "roboto", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 14px;
+            color:0A192B;
+            text-align: left; 
+            margin-top: 5px; 
+            margin-bottom: 5px;
+            width: 100%;
+        }
+
+        .question_title{
+            font-family: "montserrat", sans-serif;
+            font-weight: 600;
+            font-style: normal;
+            font-size: 16px;
+            color:#0A192B;
+            text-align: left; 
+            margin-top: 5px; 
+            margin-bottom: 0;
+        }
+
+        .content{
+            margin-top: 12px; 
+        }
+
+        .questiontype_block {
+            background: #FFE5EC; 
+            color: #D40839; 
+            border: none;
+            border-radius: 10px; 
+            font-size: 14px; /* Adjusted font size from 10px to 8px */
+            margin-right: 5px;
+            margin-top: -5px; /* Adjust this value to increase or decrease the spacing */
+        }
+
+        .content, .block3 .ptitle {
+            margin-left: 7px;  /* Added to align the text with the "Web development" button */
+        }
+
+        .questiontype_block:first-of-type {
+            margin-left: 0;  /* Removes any margin before the first button to ensure alignment */
+        }
+
+        .questions_block:hover {
+            background-color: #E3E6EA !important; /* Hover state background color */
+            border: 1px solid var(--border, #E3E6EA);
+        }
+
+        .button-inactive {
+            background: #FFE5EC; 
+            color: #D40839; 
+            border-color: #E3E6EA;
+
+            /* Prevents the hover effect */
+            pointer-events: none;
+        }
+
+        
+        /*  TRENDING DISCUSSION  */
+        .block4 {
+            width: 20%;
+            margin-left: 79%;
+            position: relative;
+            background-color: #FFFBFC; 
+            padding: 10px 13px; 
+            border-radius: 12px; 
+            margin-top: 20px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            width: calc(20% - 20px); /* Subtract margin from width */
+            border: 1px solid #CECED2;
+            font-family: "montserrat", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 24px;
+            flex-direction: column;
+            display: flex;
+            justify-content: space-between; /* This will add space between each discussions_block */
+            flex-wrap: nowrap; /*allows the items to wrap onto multiple lines if necessary */
+
+        }
+
+        .topquestions_block{
+            color: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            border: 1px solid #ced4da;
+            background-color: rgba(206, 206, 210, 0.12);
+            display: flex;
+            padding: 0px 12px;
+            align-items: center;
+            align-self: stretch;
+            margin-top: 3px;
+            margin-bottom: 5px;
+            flex-direction: column;
+        }
+
+        .topinner_questions_block{
+            font-family: "roboto", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 14px;
+            color:#0A192B;
+            text-align: left; 
+            margin-top: 5px; 
+            margin-bottom: 5px;
+            width: 100%;
+        }
+        
+        .topquestion_title{
+            font-family: "montserrat", sans-serif;
+            font-weight: 600;
+            font-style: normal;
+            font-size: 16px;
+            color:#0A192B;
+            text-align: left; 
+            margin-top: 5px; 
+            margin-bottom: 0;
+        }
+
+        .filter {
+            background: #E5E5E9; /* Set the default state background color */
+            font-size: 14px; 
+            font-weight: 400;
+            border-radius: 10px; 
+            margin: 5px;
+            width: 20%;
+            margin-left: 79%;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .filter:hover {
+            background-color: #DAD9DD !important; /* Hover state background color */
+        }
+
+        .topquestion_block {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-top: 14px;
+            flex-wrap: wrap; /* Prevent wrapping */
+        }
+
+        .topquestions_block:hover {
+            background-color: #E3E6EA !important; /* Hover state background color */
+            border: 1px solid var(--border, #E3E6EA);
+        }
+
+        .titletags{
+            display: flex;
+            flex-direction: row;
+            margin-top: 15px;
+            font-family: "roboto", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            gap: 5px;
+        }
+
+        .description {
+            font-family: "roboto", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 16px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .questionimg{
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .comment{
+            font-family: "montserrat", sans-serif;
+            font-weight: 600;
+            font-style: normal;
+            font-size: 16px;
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between; /* Add this line */
+            flex-direction: column;
+        }
+
+        .makecomment{
+            display: flex;
+            padding: 8px 12px;
+            align-items: center;
+            gap: 12px;
+            margin-top: 7px;
+        }
+
+        .submit{
+            font-family: "roboto", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 14px;
+            display: flex;
+            width: 600px;
+            height: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border, #CECED2);
+            background: #FFF;
+        }
+
+        .ptitle2{
+            font-family: "roboto", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 12px;
+            color:rgba(10, 25, 43, 0.65);
+            margin-bottom: 0px;
+            margin-left: 85%;
+        }
+
+        .othercomment{
+            display: flex;
+            justify-content: space-between; /* Add this line */
+            flex-direction: row;
+            padding: 8px 12px;
+            align-items: center;
+            gap: 12px;
+            margin-top: 7px;
+        }
+
+        .comments_block2{
+            color: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            border: 1px solid var(--border, #CECED2);
+            background: rgba(229, 229, 233, 0.40);
+            display: flex;
+            padding: 5px 12px;
+            align-items: center;
+            gap: 12px;
+            align-self: stretch;
+            margin-top: -5%;
+            margin-bottom: 5px;
+            margin-left: 7%;
+            flex-direction: row;
+        }
+
+        .inner_comments_block2{
+            font-family: "roboto", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 14px;
+            color:0A192B;
+            text-align: left; 
+            margin-bottom: 5px;
+            width: 100%;
+        }
+
+        .button-inactive2 {
+            color: 0 0 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border, #CECED2);
+            background: rgba(229, 229, 233, 0.40);
+
+            /* Prevents the hover effect */
+            pointer-events: none;
+        }
+
+
+        /* Container holding the buttons, with flex layout */
+        .button-container {
+            display: flex;
+            margin-top: 1%;
+        }
+
+        .like, .reply {
+            font-family: "roboto", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 12px;
+            color: rgba(10, 25, 43, 0.65);
+            border: none;
+            cursor: pointer; /* Makes it clear that the buttons are clickable */
+            background: none; /* Removes default button background, if desired */
+            padding-top: 0px;
+        }
+
+        .like {
+            /* Keep your left margin for the like button */
+            margin-left: 8%;
+        }
+
+        /* Additional styles to ensure buttons align with the rest of the content if needed */
+        .othercomment, .comments_block2 {
+            margin-right: 10px; /* Adjust as necessary for your layout */
+        }
+
+
+
+    </style>
+
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" routerLink="/home">
+                <img src="assets/logo.png" alt="Logo" width="42" height="24" class="d-inline-block align-text-top">
+                UTCodeJest
+            </a>
+    
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <form class="nosubmit">
+                  <input class="nosubmit" type="search" placeholder="Search">
+                </form>
+            </div>
+    
+            <!-- Toggler button for mobile view -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <button class="nav-link"  routerLink="/question" >Question</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link-button"  routerLink="/forum" style="font-weight: 600;">Forum</button>
+                    </li>
+                    
+                    <a class="nav-profile"  routerLink="/profile">
+                        <img src="assets/profile.png" alt="profile" width="30" height="30" class="d-inline-block align-text-top">
+                    </a>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+    
+
+    
+    <div class="float-container">
+
+        <!--My Updates-->
+        <div class="block float-child" style="position: fixed;">
+            <div class="title_container">MY UPDATES</div>
+            <hr>
+                <div class="inner-block">
+                    Questions I Asked 
+                    <button class="update_block btn btn-light mb-2">
+                        <img src="assets/red_dot.png" width="10" height="10" style="align-items: left; margin-top: 5px;">
+                        <p style="text-align: left; font-weight: 600; margin-top: 5px; margin-bottom: 5px;">Problems with num()</p>
+                        <p class="ptitle">Asked 3 days ago  .  3 new responses</p>
+                    </button>
+            
+                    <button class="update_block btn btn-light mb-2">
+                        <img src="assets/red_dot.png" width="10" height="10" style="align-items: left; margin-top: 5px;">
+                        <p style="text-align: left; font-weight: 600; margin-top: 5px; margin-bottom: 5px;">Problems with num()</p>
+                        <p class="ptitle">Asked 3 days ago  .  3 new responses</p>
+                    </button>
+                    <span class="sm">
+                        <button class="btn btn-show_more show-more-btn">Show more
+                        <img src="assets/showmore-Icon.png" alt="Logo" width="24" height="24">
+                        </button>
+                    </span>
+                </div><hr>
+                
+                <div class="inner-block">
+                    Questions I Followed
+                    <button class="update_block btn btn-light mb-2">
+                        <img src="assets/red_dot.png" width="10" height="10" style="align-items: left; margin-top: 5px;">
+                        <p style="text-align: left; font-weight: 600; margin-top: 5px; margin-bottom: 5px;">Problems with num()</p>
+                        <p class="ptitle">Asked 3 days ago  .  3 new responses</p>
+                    </button>
+            
+                    <button class="update_block btn btn-light mb-2">
+                        <img src="assets/red_dot.png" width="10" height="10" style="align-items: left; margin-top: 5px;">
+                        <p style="text-align: left; font-weight: 600; margin-top: 5px; margin-bottom: 5px;">Problems with num()</p>
+                        <p class="ptitle">Asked 3 days ago  .  3 new responses</p>
+                    </button>
+                    <span class="sm">
+                        <button class="btn btn-show_more show-more-btn" style="margin-bottom: 0px;">Show more
+                        <img src="assets/showmore-Icon.png" alt="Logo" width="24" height="24">
+                        </button>
+                    </span>
+                </div>
+
+        </div>
+        
+
+
+        <div class="block3 float-child">
+            <div class="title_container2">
+                Bootstrap Alternatives 2023
+                <p class="ptitle">Posted 3 days ago</p>
+            </div>
+            <div class="titletags">
+                <button class="questiontype_block btn btn-light mb-2 button-inactive">Web development</button>
+                <button class="questiontype_block btn btn-light mb-2 button-inactive">Bootstrap</button>
+            </div>
+            <hr style="margin: 10px; margin-left: 0px;">
+            
+            <div class="description">
+                Explore the landscape of Bootstrap alternatives in 2023! <br>
+                With modern frameworks offering unique features and flexibilities, developers are spoilt for choice. <br>
+                Dive into our curated list of the most promising contenders that are reshaping frontend development with innovative design and functionality.
+                <img class="questionimg" src="assets/conference_pic.png" style="height: 350px; align-self: stretch;">
+            </div>
+            <hr style="margin: 10px; margin-left: 0px;">
+
+            <div class="comment">
+                <div> <!-- This div groups the text and the comment input together -->
+                    Comments
+                    <div class="makecomment">
+                        <img src="assets/profile.png" alt="profile image for current logged-in user. This image is next to the comment input field." width="30" height="30">
+                        <form (ngSubmit)="addComment()" class="submit">
+                            <input [(ngModel)]="userComment" name="comment" class="submit" type="text" placeholder="Add your comments">
+                            <button type="submit">Post</button>
+                          </form>
+                    </div>
+                </div>
+                <button class="filter btn btn-light">Most Popular
+                    <img src="assets/showmore-Icon.png" alt="Logo" width="24" height="24" style="margin-left: 8px;">
+                </button>
+            </div>
+            
+            <!-- Dynamic comments section -->
+            <div *ngFor="let comment of comments; let i = index">
+                <div class="othercomment">
+                <img src="assets/profile.png" width="30" height="30">
+                </div>
+                <div class="comments_block2 btn button-inactive2" role="button">
+                <div class="inner_comments_block2">
+                    <p class="content">{{ comment.text }}</p>
+                    <p class="ptitle2">Posted {{ comments.length - comment.order + 1 }} min ago</p> <!-- Reverse the order for comment.order -->
+                </div>
+                </div>
+                <div class="button-container">
+                <button class="like btn">Like</button>
+                <button class="reply btn">Reply</button>
+                </div>
+            </div>
+  
+  
+              
+              
+              
+
+
+
+
+
+
+        </div>
+
+
+        <div class="block4" style="position: fixed;">
+            <div class="title_container">
+                TOP QUESTIONS
+            </div>
+            <hr class="custom-line">
+            <div class="topquestions_block btn" style="margin-top:0px" href="#" role="button">
+                <div class="topinner_questions_block">
+                    <div class="topquestion_title">
+                        <img src="assets/profile4.png" width="30" height="30">
+                        <h5 style="margin-left: 5px; font-size: small;">Problems with num()</h5>
+                    </div>
+                    <div class="topquestion_block">
+                        <button class="questiontype_block btn btn-light mb-2 button-inactive" style="font-size: 12px;">Web development</button>
+                        <button class="questiontype_block btn btn-light mb-2 button-inactive" style="font-size: 12px;">Bootstrap</button>
+                    </div>
+                    <p class="ptitle">Asked 3 days ago</p>
+                </div>
+            </div>
+
+            <div class="topquestions_block btn" href="#" role="button">
+                <div class="topinner_questions_block">
+                    <div class="topquestion_title">
+                        <img src="assets/profile1.png" width="30" height="30">
+                        <h5 style="margin-left: 5px; font-size: small;">Problems with num()</h5>
+                    </div>
+                    <div class="topquestion_block">
+                        <button class="questiontype_block btn btn-light mb-2 button-inactive" style="font-size: 12px;">Web development</button>
+                        <button class="questiontype_block btn btn-light mb-2 button-inactive" style="font-size: 12px;">Bootstrap</button>
+                    </div>
+                    <p class="ptitle">Asked 3 days ago</p>
+                </div>
+            </div>
+
+            <div class="topquestions_block btn" href="#" role="button">
+                <div class="topinner_questions_block">
+                    <div class="topquestion_title">
+                        <img src="assets/david.png" width="30" height="30">
+                        <h5 style="margin-left: 5px; font-size: small;">Problems with num()</h5>
+                    </div>
+                    <div class="topquestion_block">
+                        <button class="questiontype_block btn btn-light mb-2 button-inactive" style="font-size: 12px;">Web development</button>
+                        <button class="questiontype_block btn btn-light mb-2 button-inactive" style="font-size: 12px;">Bootstrap</button>
+                    </div>
+                    <p class="ptitle">Asked 3 days ago</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        window.onscroll = function() { addNavbarBorder() };
+        
+        function addNavbarBorder() {
+          var navbar = document.querySelector('.navbar');
+          if (window.pageYOffset > 0) {
+            navbar.classList.add("navbar-border");
+          } else {
+            navbar.classList.remove("navbar-border");
+          }
+        }
+
+    </script> 
+
+
+</body>
+
+</html>

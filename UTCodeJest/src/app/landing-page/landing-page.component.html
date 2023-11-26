@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Landing Page</title>
+    <link
+      rel="stylesheet"
+      href="https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/easygpt/default.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"
+      integrity="sha384-cy1T6p5DHn11pPGD4R4L7JdXNcikbPFOi0rnVU90+RWuM1OgWPPJe9gDjzZcJbdI"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      /* Navbar styles */
+      .navbar-brand {
+        display: flex;
+        align-items: center;
+        margin-left: 5px;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .navbar-brand img {
+        margin-right: 5px; /* Adjust the margin as needed */
+      }
+
+      /* Hide border-bottom by default */
+      .navbar {
+        border-bottom: none;
+      }
+
+      /* Show border-bottom when scrolled */
+      .navbar.navbar-border {
+        border-bottom: 1px solid #ceced2;
+      }
+
+      /* Placeholder text for testing scrollspy */
+      section {
+        height: 700px; /* Adjust the height as needed */
+        /* border: 1px solid #ccc; */
+        margin: 20px 0;
+        margin-bottom: 240px;
+        font-family: "montserrat", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        position: relative;
+      }
+
+      /* Custom styles to position Onboarding buttons */
+      #onboardingNav {
+        position: absolute;
+        left: 180px; /* Adjust the right position as needed */
+        top: 10px; /* Adjust the top position as needed */
+        height: 40px; /* Match the height with other buttons */
+      }
+
+      /* Style for "TOGETHER" in hex code E42D55 */
+      .together {
+        color: #D40839;
+        margin-left: 100px; /* Adjust the left margin as needed */
+        margin-top: 25px; /* Adjust the left margin as needed */
+        font-weight: 500;
+      }
+
+      /* Description style */
+      .description {
+        font-size: 17px; /* Adjust the font size as needed */
+        font-family: "montserrat", sans-serif;
+        margin-left: 102px; /* Adjust the left margin as needed */
+        margin-top: 30px; /* Adjust the left margin as needed */
+      }
+
+      /* Custom styles to increase font size */
+      #onboarding h1,
+      h2 {
+        font-family: "montserrat", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        margin-top: 120px; /* Adjust the left margin as needed */
+        font-size: 53px; /* Adjust the font size as needed */
+        display: flex;
+        align-items: center;
+        margin-left: 95px; /* Adjust the left margin as needed */
+      }
+
+      /* Add more margin to the top of the "onboarding" section */
+      #onboarding {
+        height: 400px; /* Adjust the height as needed */
+        margin-top: 200px; /* Adjust the margin as needed */
+      }
+
+      /* Image style */
+      #handimg {
+        width: 330px; /* Adjust the width as needed */
+        margin-left: 880px; /* Adjust the left margin as needed */
+        margin-top: -270px;
+      }
+
+      h2.together {
+        font-size: 45px;
+      }
+
+      h2 {
+        font-size: 30px;
+        margin-left: 150px; /* Adjust the left margin as needed */
+      }
+
+      p {
+        font-family: "montserrat", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 17px;
+        margin-top: 20px;
+        margin-left: 150px; /* Adjust the left margin as needed */
+      }
+
+      /* Button styles */
+      .rounded-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "montserrat", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+        font-size: smaller;
+        border-radius: 10px;
+        background-color: #e5e5e9;
+        color: #000; /* Adjust the text color as needed */
+        padding: 6px 0; /* Adjust the padding as needed */
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-left: 25px; /* Adjust the left margin as needed */
+      }
+
+      .rounded-btn:hover {
+        background-color: #000;
+        color: #fff; /* Text color for clicked section */
+        font-weight: 600;
+      }
+
+      /* Add this style to make the sign-in and login buttons longer */
+      .signup-btn {
+        width: 90px; /* Adjust the width as needed */
+      }
+      .login-btn {
+        width: 70px; /* Adjust the width as needed */
+      }
+
+      /* Button styles for join UTCodeJest */
+      .join-btn {
+        width: 200px; /* Adjust the width as needed */
+        padding: 10px 20px; /* Adjust the padding as needed */
+        font-family: "montserrat", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        font-size: smaller;
+        border-radius: 10px;
+        background-color: #fdb43d;
+        color: #000; /* Adjust the text color as needed */
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .join-btn:hover {
+        background-color: #000;
+        color: #fff; /* Text color for clicked section */
+        font-weight: 600;
+      }
+
+      /* Arrow styles */
+      .arrow {
+        margin-left: 5px; /* Adjust the space between text and arrow as needed */
+      }
+
+      /* OnboardingNav styles */
+      #onboardingNav a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "montserrat", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: smaller;
+        padding: 0px 20px; /* Adjust the padding as needed */
+        height: 34px; /* Match the height with other buttons */
+        margin-top: 2px;
+        text-decoration: none;
+        color: #000; /* Adjust the text color as needed */
+        background-color: #fce8ec; /* Background color for unclicked sections */
+        transition: background-color 0.3s;
+      }
+
+      #onboardingNav a.active {
+        background-color: #0a192b; /* Background color for clicked section */
+        border-radius: 10px;
+        color: #fff; /* Text color for clicked section */
+        font-family: "montserrat", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        font-size: smaller;
+      }
+
+      /* Border-radius for the onboardingNav buttons */
+      #onboardingNav a:first-child {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        margin-left: 20px;
+      }
+
+      #onboardingNav a:last-child {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+      }
+
+      /* Image style */
+      #homeimg,
+      #discussionimg {
+        width: 65%; /* Adjust the width as needed */
+        margin-left: 550px; /* Adjust the left margin as needed */
+        margin-top: -430px;
+      }
+
+      .section1txt {
+        margin-left: 10px;
+      }
+
+      .section2txt {
+        margin-left: 735px;
+      }
+
+      .section3txt {
+        margin-left: -20px;
+      }
+
+      .section4txt {
+        margin-left: 500px;
+      }
+
+      /* Image style */
+      #patternimg {
+        width: 38%; /* Adjust the width as needed */
+      }
+
+      /* Image style */
+      #longpatternimg {
+        width: 120%; /* Adjust the width as needed */
+        margin-top: 200px;
+      }
+
+      h3 {
+        font-family: "montserrat", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        font-size: 30px;
+        margin-top: 120px;
+        margin-left: 150px; /* Adjust the left margin as needed */
+      }
+
+      /* UT color */
+      .custom-color {
+        font-family: "montserrat", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        color: #fdb43d;
+      }
+
+      /* Social media icons with pink circles */
+      .col-md-3.text-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 15px; /* Adjusted the top margin to move the entire section down */
+      }
+
+      /* Pink circles */
+      .icon-circle {
+        width: 25px;
+        height: 25px;
+        background-color: #D40839;
+        border-radius: 50%;
+        margin: -15px 5px 0 15px; /* Adjusted the top margin to move the circles down */
+        position: relative; /* Added absolute positioning */
+      }
+
+      /* Image icons */
+      .col-md-3.text-center img {
+        position: relative;
+        z-index: 1;
+        margin-top: 30px; /* Adjusted the margin to move the icons down */
+      }
+
+      .footerbg {
+        background-color: #ffffff;
+        margin-top: -400px;
+        margin-bottom: 100px;
+        padding: 20px;
+      }
+
+      .footerlogo {
+        font-family: "montserrat", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 20px;
+      }
+
+      .footer {
+        display: flex;
+        align-items: center;
+      }
+
+      .footerlogo {
+        margin-left: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand" href="#">
+          <img
+            src="assets/logo.png"
+            alt="Logo"
+            width="40"
+            height="20"
+            class="d-inline-block align-top"
+          />
+          UTCodeJest
+        </a>
+
+        <!-- Navbar items -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a
+                class="nav-link rounded-btn custom-width-btn signup-btn"
+                routerLink="/register"
+                >Sign Up</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link rounded-btn custom-width-btn login-btn"
+                routerLink="/login"
+                style="margin-right: 25px"
+                >Login</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Onboarding buttons -->
+        <nav id="onboardingNav" class="nav">
+          <a class="nav-link active" href="#onboarding">Onboarding</a>
+          <a class="nav-link" href="#section1">1</a>
+          <a class="nav-link" href="#section2">2</a>
+          <a class="nav-link" href="#section3">3</a>
+          <a class="nav-link" href="#section4">4</a>
+        </nav>
+      </div>
+    </nav>
+
+    <div class="container">
+      <!-- Sections with placeholder text for testing scrollspy -->
+      <section id="onboarding">
+        <div class="text">
+          <h1>Code, Connect, Growth</h1>
+          <h2 class="together">TOGETHER</h2>
+          <p class="description">
+            UTCodeJest is a collaborative hub connecting anyone who codes in UT,
+            <br />to discover solutions, network, and grow together.
+          </p>
+        </div>
+        <div class="image">
+          <img id="handimg" src="assets/hand.png" alt="hand" />
+        </div>
+      </section>
+      <section id="section1" style="padding-top: 100px">
+        <div class="section1txt">
+          <h2>Discuss Question</h2>
+          <p>
+            Post questions for any coding problems. <br />Provide solutions to
+            help others and <br />contribute to archived solutions for <br />UT
+            development community!
+          </p>
+        </div>
+        <div class="image">
+          <img id="homeimg" src="assets/home.png" alt="home" />
+          <img
+            id="patternimg"
+            src="assets/pattern.png"
+            alt="pattern"
+            style="margin-left: -100px; margin-top: -40px"
+          />
+        </div>
+      </section>
+      <section id="section2">
+        <div class="section2txt" style="padding-top: 100px">
+          <h2>Expand your Network</h2>
+          <p>
+            Show your skills! <br />Get chance to connect with <br />UT
+            students, alumni, and faculty.
+          </p>
+        </div>
+        <div class="image">
+          <img
+            id="profile_pageimg"
+            src="assets/profile_page.png"
+            alt="profile_page"
+            style="margin-left: -110px; margin-top: -420px"
+           
+          />
+          <img
+            id="patternimg"
+            src="assets/pattern.png"
+            alt="pattern"
+            style="transform: scaleX(-1); margin-left: 900px; margin-top: -20px"
+          />
+        </div>
+      </section>
+      <section id="section3" style="padding-top: 150px">
+        <div class="section3txt">
+          <h2>Discover Trending <br />Topics and Project Ideas</h2>
+          <p>
+            Search and browse trending topics <br />and ideas in software
+            development.
+          </p>
+        </div>
+        <div class="image">
+          <img
+            id="discussionimg"
+            src="assets/discussion.png"
+            alt="discussion"
+          />
+          <img
+            id="longpatternimg"
+            src="assets/pattern2.png"
+            alt="longpattern"
+            style="margin-left: -165px"
+          />
+        </div>
+      </section>
+      <section id="section4" style="padding-top: 80px">
+        <div class="section4txt">
+          <h3>
+            Ready to be part of <br /><span class="custom-color"> UT </span>
+            developer Community?
+          </h3>
+        </div>
+        <button
+          class="rounded-btn join-btn"
+          style="margin-top: 30px; margin-left: 650px"
+          routerLink="/register"
+        >
+          Join UTCodeJest <span class="arrow">></span>
+        </button>
+      </section>
+    </div>
+
+    <footer class="footerbg text-dark py-3">
+      <div class="container">
+        <div class="row align-items-center">
+          <!-- Logo and title on the left top -->
+          <div class="footer">
+            <img
+              src="assets/logo.png"
+              alt="Logo"
+              width="40"
+              height="20"
+              class="d-inline-block align-top"
+            />
+            <span class="footerlogo">UTCodeJest</span>
+            <p class="footer-texts m-5">About</p>
+            <p class="footer-texts m-2">Discover</p>
+          </div>
+
+          <!-- Social media icons with pink circles -->
+          <div class="col-md-3 text-center">
+            <a
+              href="https://www.linkedin.com/"
+              class="text-light me-3 position-relative"
+            >
+              <img
+                src="assets/Linkedin.png"
+                alt="Linkedin"
+                width="25"
+                height="25"
+              />
+              <!-- Font Awesome LinkedIn icon -->
+              <div class="icon-circle"></div>
+            </a>
+            <a
+              href="https://www.instagram.com/"
+              class="text-light me-3 position-relative"
+            >
+              <img
+                src="assets/Instagram.png"
+                alt="Instagram"
+                width="25"
+                height="25"
+              />
+              <!-- Font Awesome Instagram icon -->
+              <div class="icon-circle"></div>
+            </a>
+            <a
+              href="https://www.facebook.com/"
+              class="text-light position-relative"
+            >
+              <img
+                src="assets/Facebook.png"
+                alt="Facebook"
+                width="25"
+                height="25"
+              />
+              <!-- Font Awesome Facebook icon -->
+              <div class="icon-circle"></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Enable scrollspy using JavaScript
+      var scrollSpy = new bootstrap.ScrollSpy(document.body, {
+        target: "#onboardingNav",
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        var navbar = document.querySelector(".navbar");
+
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 0) {
+            navbar.classList.add("navbar-border");
+          } else {
+            navbar.classList.remove("navbar-border");
+          }
+        });
+
+        // Trigger the scroll event on page load to apply the initial state
+        window.dispatchEvent(new Event("scroll"));
+      });
+    </script>
+  </body>
+</html>

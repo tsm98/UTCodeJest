@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+      body {
+        background-color: #fffbfc;
+      }
+      .navbar {
+        background-color: #fffbfc;
+        height: auto;
+        padding: 25px 21px;
+      }
+      .navbar-brand {
+        background-color: #fffbfc;
+        border-color: #ceced2;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        text-align: center;
+        margin: 14px 0;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+        font-size: 24px;
+      }
+      .btn-primary {
+        background-color: #e5e5e9;
+        border-color: #e5e5e9;
+        color: #0a192b;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+      }
+      .btn-link {
+        color: #d40839;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+      }
+      .container {
+        width: 1000px;
+        height: auto;
+        margin-top: 50px;
+        margin-bottom: 10px;
+        font-family: "Montserrat", sans-serif;
+      }
+      .form-label {
+        font-family: "Montserrat", sans-serif;
+      }
+      .form-box {
+        border: 1px solid #ced4da;
+        background-color: #ffffff;
+        border-radius: 12px;
+        padding: 20px;
+        height: 100%;
+        width: 478px;
+        font-family: "Montserrat", sans-serif;
+      }
+      .bottom-images {
+        justify-content: space-between;
+        background-image: url("assets/pattern3.png");
+        background-repeat: repeat;
+        height: 200px;
+        margin-top: -100px;
+        background-size: cover;
+        font-family: "Montserrat", sans-serif;
+      }
+      .label {
+        color: #999797;
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+      .navbar {
+        background-color: #fffbfc;
+        height: auto;
+        padding-top: 25px;
+        padding-bottom: 25px;
+        padding-left: 21px;
+        padding-right: 21px;
+      }
+
+      .navbar-brand {
+        background-color: #fffbfc;
+        border-color: #ceced2;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        text-align: center;
+        margin-bottom: 14px;
+        margin-top: 14px;
+        font-family: "montserrat", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 24px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            alt="Logo"
+            class="d-inline-block align-text-top"
+            height="24"
+            src="assets/logo.png"
+            width="42"
+          />
+          UTCodeJest
+        </a>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+          <div class="form-box">
+            <div class="mb-3 text-center">
+              <h2 style="font-size: 32px; margin: 32px 0">Sign Up</h2>
+            </div>
+            <form
+              (ngSubmit)="onSignUp($event)"
+              #form="ngForm"
+              enctype="multipart/form-data"
+            >
+              <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="username"
+                  name="username"
+                  [(ngModel)]="name"
+                  placeholder="Username"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="utEmail" class="form-label">UT EID</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="utEmail"
+                  name="utEmail"
+                  [(ngModel)]="utEid"
+                  placeholder="UT EID"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  [(ngModel)]="email"
+                  placeholder="Example@xxx.com"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Create Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  name="password"
+                  [(ngModel)]="password"
+                  placeholder="Password"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="confirm_password" class="form-label"
+                  >Confirm Password</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="confirm_password"
+                  name="confirmPassword"
+                  [(ngModel)]="confirmPassword"
+                  placeholder="Password"
+                  required
+                />
+                <div *ngIf="passwordMismatch" class="alert alert-danger mt-3">
+                  Password and Confirm Password do not match.
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="profileImage" class="form-label"
+                  >Profile Image</label
+                >
+                <input
+                  type="file"
+                  class="form-control"
+                  id="profileImage"
+                  name="profileImage"
+                  accept="image/*"
+                  [(ngModel)]="profileImage"
+                />
+              </div>
+
+              <div class="mb-3">
+                <button type="submit" class="btn btn-primary w-100">
+                  SIGN UP
+                </button>
+
+                <div class="text-center">
+                  <p style="font-size: 16px; padding-top: 10px" class="pb-3">
+                    Already have an account?
+                    <button
+                      type="button"
+                      routerLink="/login"
+                      class="btn btn-link"
+                    >
+                      Login
+                    </button>
+                  </p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-images"></div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+
+  <!-- Error Modal -->
+  <div
+    class="modal fade"
+    id="errorModal"
+    tabindex="-1"
+    aria-labelledby="errorModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="errorModalLabel">Error</h5>
+          <button
+            type="button"
+            class="btn-close"
+            (click)="closeErrorModal()"
+            data-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          {{ errorMessage }}
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="closeErrorModal()"
+            data-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div
+    class="modal fade"
+    id="successModal"
+    tabindex="-1"
+    aria-labelledby="successModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="successModalLabel">Success</h5>
+          <button
+            type="button"
+            class="btn-close"
+            (click)="closeSuccessModal()"
+            data-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">Registration successful!</div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-success"
+            (click)="closeSuccessModal()"
+            data-dismiss="modal"
+          >
+            Continue
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</html>

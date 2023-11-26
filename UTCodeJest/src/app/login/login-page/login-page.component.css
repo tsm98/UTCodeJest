@@ -1,0 +1,117 @@
+/* Custom CSS */
+
+body {
+    background-color: #FFFBFC;
+}
+
+.navbar {
+    background-color: #FFFBFC;
+    height: auto;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 21px;
+    padding-right: 21px;
+}
+
+.navbar-brand {
+    background-color: #FFFBFC;
+    border-color: #CECED2;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin-bottom: 14px;
+    margin-top: 14px;
+    font-family: "montserrat", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 24px;
+}
+
+.btn-primary {
+    background-color: #E5E5E9;
+    border-color: #E5E5E9;
+    color: #0A192B;
+    font-family: "montserrat", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+}
+
+.btn-primary:hover {
+    background-color: #EBEBEF;
+    border-color: #EBEBEF;
+    color: #0A192B;
+    font-family: "montserrat", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+}
+
+.btn-link {
+    color: #D40839;
+    font-family: "montserrat", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+}
+
+.btn-link:hover {
+    color: #D40839;
+    font-family: "montserrat", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+}
+
+.container {
+    width: 1000px;
+    height: auto;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    font-family: "montserrat", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+}
+
+.form-label {
+    font-family: "montserrat", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.form-box {
+    border: 1px solid #ced4da;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    padding: 20px;
+    height: 618px;
+    width: 478px;
+    font-family: "montserrat", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.bottom-images {
+    justify-content: space-between;
+    background-image: url('pattern3.png');
+    background-repeat: repeat;
+    height: 200px;
+    margin-top: -25px;
+    background-size: cover;
+    font-family: "montserrat", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.label {
+    color: #999797;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+input::placeholder {
+    color: #999797;
+    font-family: "roboto";
+}
