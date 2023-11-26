@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "UTCodeJest/package.json",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "UTCodeJest/backend/**/*.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "UTCodeJest/backend/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "UTCodeJest/dist/$1"
+    }
+  ]
+}
