@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const config = require("config");
 
-const db = config.get("mongoURI");
+const db = "mongodb+srv://sairam_maddala:CrFK3miLwJKnYk57@cluster0.6o1vrwt.mongodb.net/UTCodeJest?retryWrites=true&w=majority";
 
 const connectDB = async () => {
   try {
