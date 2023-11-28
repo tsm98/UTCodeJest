@@ -126,8 +126,8 @@ export class HomeComponent implements OnInit {
         postTags: this.postTags.split(','),
         file: this.base64String?.toString(),
         userEmail: this.userEmail,
+        likes: 0,
       };
-      console.log(userData.file);
 
       this.http
         .post('https://nutritious-flax-squid.glitch.me/api/posts', userData)
@@ -142,6 +142,8 @@ export class HomeComponent implements OnInit {
             console.error(error);
           }
         );
+
+      console.log(userData.file);
     }, 1000);
   }
 

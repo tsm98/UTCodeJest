@@ -12,11 +12,8 @@ import { UserService } from '../user.service';
 export class QuestionDetailComponent {
   currPost: any;
 
-  liked: boolean = false; // Variable to track whether the button is liked
-  toggleLike(comment: any): void {
-    this.liked = !this.liked;
-    if (this.liked) comment.likes += 1; // Toggle the liked state
-  }
+  isLiked: boolean = true;
+  likeCount: number = 0;
 
   userComment = ''; // For the new comment input by the user
   comments: any; // Initialize as an empty array
@@ -84,5 +81,34 @@ export class QuestionDetailComponent {
 
   sanitizedUrl(fileBase64: string) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(fileBase64);
+  }
+
+  likePost() {
+    const userDetails = this.userService.getUser();
+    const newLike = {
+      user: userDetails,
+      name: userDetails?.name,
+      postId: this.currPost._id,
+    };
+    console.log(newLike);
+
+    this.http
+      .post('https://nutritious-flax-squid.glitch.me/api/posts/like', newLike)
+      .subscribe(
+        (response) => {
+          console.log(response);
+
+          // this.comments = response;
+          // Handle success - maybe navigate the user or display a success message
+          // this.showSuccessModal();
+        },
+        (error) => {
+          console.error(error);
+          // Handle error - maybe display an error message to the user
+        }
+      );
+
+    this.isLiked = !this.isLiked;
+    console.log(this.isLiked);
   }
 }

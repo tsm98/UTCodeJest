@@ -891,6 +891,23 @@
         </div>
         <hr style="margin: 10px; margin-left: 0px" />
 
+        <div class="like-post">
+          <div class="like-post">
+            <button class="btn" (click)="likePost()">
+              <i
+                *ngIf="isLiked == true"
+                class="fas fa-thumbs-up like-icon liked"
+              ></i>
+              <i
+                *ngIf="isLiked == false"
+                class="fas fa-thumbs-up like-icon"
+              ></i>
+            </button>
+
+            <span>{{ likeCount }}</span>
+          </div>
+        </div>
+
         <div class="comment">
           <div>
             <!-- This div groups the text and the comment input together -->
@@ -939,11 +956,6 @@
               </p>
               <!-- Reverse the order for comment.order -->
             </div>
-          </div>
-          <div class="button-container">
-            <button class="like btn" (click)="toggleLike(comment)">Like</button>
-            <span *ngIf="liked" class="like-icon">❤️ {{ comment.likes }}</span>
-            <button class="reply btn">Reply</button>
           </div>
         </div>
       </div>
