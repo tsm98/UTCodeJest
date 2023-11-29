@@ -45,6 +45,10 @@ export class HomeComponent implements OnInit {
 
     this.getAllPosts(this.userForPosts);
 
+    this.getUserPost();
+  }
+
+  getUserPost() {
     let userData = {
       user: this.userDetails,
     };
@@ -76,6 +80,7 @@ export class HomeComponent implements OnInit {
       .subscribe(
         (response) => {
           this.allPosts = response;
+          this.allPosts = this.allPosts.reverse();
 
           this.allPosts.filter((post: any) => {
             for (let comment of post.comment) {
@@ -154,6 +159,7 @@ export class HomeComponent implements OnInit {
             this.closePostModal();
             this.showSuccessModal();
             this.getAllPosts(this.userForPosts);
+            this.getUserPost();
           },
           (error) => {
             console.error(error);

@@ -55,10 +55,14 @@ export class QuestionDetailComponent {
       this.isLiked = true;
     }
 
+    this.getUserPosts();
+    this.getAllPosts(this.currUser);
+  }
+
+  getUserPosts() {
     let userData = {
       user: this.currUser,
     };
-
     this.http
       .post(
         'https://nutritious-flax-squid.glitch.me/api/posts/getUserPosts',
@@ -75,8 +79,6 @@ export class QuestionDetailComponent {
           // Handle error - maybe display an error message to the user
         }
       );
-
-    this.getAllPosts(this.currUser);
   }
 
   ngAfterViewInit(): void {
@@ -187,6 +189,7 @@ export class QuestionDetailComponent {
             console.log(response);
 
             this.comments = response;
+            this.getUserPosts();
             // Handle success - maybe navigate the user or display a success message
             // this.showSuccessModal();
           },

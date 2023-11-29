@@ -756,7 +756,7 @@
               {{ userPost.title }}
             </div>
             <p class="ptitle">
-              Asked 3 days ago . {{ userPost.comment.length }}
+              Asked 3 days ago . {{ userPost.comment.length }} comments
             </p>
           </button>
 
@@ -781,7 +781,9 @@
             >
               {{ post.title }}
             </p>
-            <p class="ptitle">Asked 3 days ago . 3 new responses</p>
+            <p class="ptitle">
+              Asked 3 days ago . {{ post.comment.length }} comments
+            </p>
           </button>
         </div>
       </div>
@@ -854,7 +856,7 @@
                 height="30"
                 style="border-radius: 50%"
               />
-              <form (ngSubmit)="addComment()" class="submit">
+              <form class="submit">
                 <input
                   [(ngModel)]="userComment"
                   name="comment"
@@ -867,6 +869,7 @@
                   type="button"
                   class="ml-3 d-flex align-items-center btn btn-success"
                   style="padding-top: 15px"
+                  (click)="addComment()"
                 >
                   <p class="mb-2">Post</p>
                 </button>
@@ -904,95 +907,31 @@
         <div
           class="topquestions_block btn"
           style="margin-top: 0px"
-          href="#"
+          routerLink="/question-detail"
           role="button"
+          *ngFor="let question of allPosts"
         >
           <div class="topinner_questions_block">
-            <div class="topquestion_title">
+            <div class="topquestion_title row">
               <img
-                src="assets/profile4.png"
-                alt="profile image of user4. User4's question is selected as top questions. The question title is on the right to the image."
+                alt="pic"
+                [src]="question.user.profileImage"
                 width="30"
                 height="30"
+                style="border-radius: 50%"
+                class="col-md-3"
               />
-              <h5 style="margin-left: 5px; font-size: small">
-                Problems with num()
+              <h5 style="font-size: small" class="pl-0 col-md-8">
+                {{ question.title }}
               </h5>
             </div>
             <div class="topquestion_block">
               <button
                 class="questiontype_block btn btn-light mb-2 button-inactive"
                 style="font-size: 12px"
+                *ngFor="let tag of question.tags"
               >
-                Web development
-              </button>
-              <button
-                class="questiontype_block btn btn-light mb-2 button-inactive"
-                style="font-size: 12px"
-              >
-                Bootstrap
-              </button>
-            </div>
-            <p class="ptitle">Asked 3 days ago</p>
-          </div>
-        </div>
-
-        <div class="topquestions_block btn" href="#" role="button">
-          <div class="topinner_questions_block">
-            <div class="topquestion_title">
-              <img
-                src="assets/profile1.png"
-                alt="profile image of user1. User1's question is selected as top questions. The question title is on the right to the image."
-                width="30"
-                height="30"
-              />
-              <h5 style="margin-left: 5px; font-size: small">
-                Problems with num()
-              </h5>
-            </div>
-            <div class="topquestion_block">
-              <button
-                class="questiontype_block btn btn-light mb-2 button-inactive"
-                style="font-size: 12px"
-              >
-                Web development
-              </button>
-              <button
-                class="questiontype_block btn btn-light mb-2 button-inactive"
-                style="font-size: 12px"
-              >
-                Bootstrap
-              </button>
-            </div>
-            <p class="ptitle">Asked 3 days ago</p>
-          </div>
-        </div>
-
-        <div class="topquestions_block btn" href="#" role="button">
-          <div class="topinner_questions_block">
-            <div class="topquestion_title">
-              <img
-                src="assets/david.png"
-                alt="profile image of david. David's question is selected as top questions. The question title is on the right to the image."
-                width="30"
-                height="30"
-              />
-              <h5 style="margin-left: 5px; font-size: small">
-                Problems with num()
-              </h5>
-            </div>
-            <div class="topquestion_block">
-              <button
-                class="questiontype_block btn btn-light mb-2 button-inactive"
-                style="font-size: 12px"
-              >
-                Web development
-              </button>
-              <button
-                class="questiontype_block btn btn-light mb-2 button-inactive"
-                style="font-size: 12px"
-              >
-                Bootstrap
+                {{ tag }}
               </button>
             </div>
             <p class="ptitle">Asked 3 days ago</p>
