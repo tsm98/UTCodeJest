@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
   fileNames: any;
   userDetails: any;
   followedQuestion: any = [];
+  topPosts: any;
 
   constructor(
     private http: HttpClient,
@@ -80,16 +81,21 @@ export class HomeComponent implements OnInit {
       .subscribe(
         (response) => {
           this.allPosts = response;
+          this.topPosts = this.allPosts.reverse().slice(0, 3);
           this.allPosts = this.allPosts.reverse();
 
-          this.allPosts.filter((post: any) => {
+          this.allPosts.forEach((post: any) => {
             for (let comment of post.comment) {
-              console.log(comment.user.email);
-              console.log(this.userEmail);
+              if (comment.user.email == this.userDetails.email) {
+                // Check if post is already in followedQuestion
+                const isAlreadyFollowed = this.followedQuestion.some(
+                  (followedPost: { _id: any }) => followedPost._id === post._id
+                );
 
-              if (comment.user.email == this.userEmail) {
-                this.followedQuestion.push(post);
-                console.log(comment);
+                // If not already followed, push to followedQuestion
+                if (!isAlreadyFollowed) {
+                  this.followedQuestion.push(post);
+                }
               }
             }
           });

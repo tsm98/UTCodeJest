@@ -20,6 +20,7 @@ export class QuestionComponent {
   fileNames: any;
 
   base64String: any;
+  topPosts: any;
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -70,6 +71,8 @@ export class QuestionComponent {
       .subscribe(
         (response) => {
           this.allPosts = response;
+          this.topPosts = this.allPosts.reverse().slice(0, 3);
+          this.allPosts = this.allPosts.reverse();
 
           this.allPosts.filter((post: any) => {
             for (let comment of post.comment) {

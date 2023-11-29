@@ -26,6 +26,7 @@ export class QuestionDetailComponent {
   userPosts: any;
   allPosts: any;
   followedQuestion: any = [];
+  topPosts: any;
 
   constructor(
     private postService: PostService,
@@ -94,12 +95,20 @@ export class QuestionDetailComponent {
       .subscribe(
         (response) => {
           this.allPosts = response;
-
-          this.allPosts.filter((post: any) => {
+          this.topPosts = this.allPosts.reverse().slice(0, 3);
+          console.log(this.topPosts);
+          this.allPosts.forEach((post: any) => {
             for (let comment of post.comment) {
               if (comment.user.email == this.currUser.email) {
-                this.followedQuestion.push(post);
-                console.log(comment);
+                // Check if post is already in followedQuestion
+                const isAlreadyFollowed = this.followedQuestion.some(
+                  (followedPost: { _id: any }) => followedPost._id === post._id
+                );
+
+                // If not already followed, push to followedQuestion
+                if (!isAlreadyFollowed) {
+                  this.followedQuestion.push(post);
+                }
               }
             }
           });
@@ -190,6 +199,7 @@ export class QuestionDetailComponent {
 
             this.comments = response;
             this.getUserPosts();
+            this.getAllPosts(this.currUser);
             // Handle success - maybe navigate the user or display a success message
             // this.showSuccessModal();
           },

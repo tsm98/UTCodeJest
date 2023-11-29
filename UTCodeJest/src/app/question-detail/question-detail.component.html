@@ -382,7 +382,7 @@
         padding: 10px 20px;
         border-radius: 12px;
         margin-top: 20px;
-        margin-bottom: 165px;
+        margin-bottom: 550px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         box-sizing: border-box;
         width: calc(55% - 30px); /* Subtract margin from width */
@@ -742,6 +742,12 @@
           Questions I Asked
           <button
             class="update_block btn btn-light mb-2"
+            *ngIf="userPosts.length == 0"
+          >
+            You have not posted anything yet!
+          </button>
+          <button
+            class="update_block btn btn-light mb-2"
             *ngFor="let userPost of userPosts"
             (click)="viewPost(userPost)"
           >
@@ -756,7 +762,8 @@
               {{ userPost.title }}
             </div>
             <p class="ptitle">
-              Asked 3 days ago . {{ userPost.comment.length }} comments
+              {{ userPost.likes.length }} likes,
+              {{ userPost.comment.length }} comments
             </p>
           </button>
 
@@ -766,6 +773,12 @@
 
         <div class="inner-block">
           Questions I Followed
+          <button
+            class="update_block btn btn-light mb-2"
+            *ngIf="followedQuestion.length == 0"
+          >
+            You are not following any posts yet!
+          </button>
           <button
             class="update_block btn btn-light mb-2"
             *ngFor="let post of followedQuestion"
@@ -782,7 +795,7 @@
               {{ post.title }}
             </p>
             <p class="ptitle">
-              Asked 3 days ago . {{ post.comment.length }} comments
+              {{ post.likes.length }} likes, {{ post.comment.length }} comments
             </p>
           </button>
         </div>
@@ -791,7 +804,6 @@
       <div class="block3 float-child">
         <div class="title_container2">
           {{ currPost.title }}
-          <p class="ptitle">Posted 3 days ago</p>
         </div>
         <div class="titletags">
           <button
@@ -909,7 +921,7 @@
           style="margin-top: 0px"
           routerLink="/question-detail"
           role="button"
-          *ngFor="let question of allPosts"
+          *ngFor="let question of topPosts"
         >
           <div class="topinner_questions_block">
             <div class="topquestion_title row">
@@ -934,7 +946,10 @@
                 {{ tag }}
               </button>
             </div>
-            <p class="ptitle">Asked 3 days ago</p>
+            <p class="ptitle">
+              {{ question.likes.length }} likes,
+              {{ question.comment.length }} comments
+            </p>
           </div>
         </div>
       </div>

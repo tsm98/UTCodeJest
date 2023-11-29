@@ -731,70 +731,8 @@
     </style>
   </head>
 
+  <app-navbar></app-navbar>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-      <div class="container-fluid">
-        <a class="navbar-brand" routerLink="/home">
-          <img
-            src="assets/logo.png"
-            alt="Logo"
-            width="42"
-            height="24"
-            class="d-inline-block align-text-top"
-          />
-          UTCodeJest
-        </a>
-
-        <!-- Search Bar -->
-        <div class="search-bar">
-          <form class="nosubmit">
-            <input class="nosubmit" type="search" placeholder="Search" />
-          </form>
-        </div>
-
-        <!-- Toggler button for mobile view -->
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Navbar links -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <button class="nav-link" routerLink="/question">Question</button>
-            </li>
-            <li class="nav-item">
-              <button
-                class="nav-link-button"
-                routerLink="/forum"
-                style="font-weight: 600"
-              >
-                Forum
-              </button>
-            </li>
-
-            <a class="nav-profile" routerLink="/profile">
-              <img
-                src="assets/profile.png"
-                alt="profile"
-                width="30"
-                height="30"
-                class="d-inline-block align-text-top"
-              />
-            </a>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
     <div class="float-container">
       <!--My Updates-->
       <div class="block float-child" style="position: fixed">

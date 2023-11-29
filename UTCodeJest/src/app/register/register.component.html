@@ -19,13 +19,14 @@
     <style>
       body {
         background-color: #fffbfc;
+        margin-top: -1%;
       }
       .navbar {
         background-color: #fffbfc;
         height: auto;
-        padding: 25px 21px;
+        padding: 0px 21px;
       }
-      .navbar-brand {
+      /* .navbar-brand {
         background-color: #fffbfc;
         border-color: #ceced2;
         position: absolute;
@@ -36,7 +37,7 @@
         font-family: "Montserrat", sans-serif;
         font-weight: 400;
         font-size: 24px;
-      }
+      } */
       .btn-primary {
         background-color: #e5e5e9;
         border-color: #e5e5e9;
@@ -54,7 +55,7 @@
       .container {
         width: 1000px;
         height: auto;
-        margin-top: 50px;
+        /* margin-top: 50px; */
         margin-bottom: 10px;
         font-family: "Montserrat", sans-serif;
       }
@@ -87,8 +88,7 @@
       .navbar {
         background-color: #fffbfc;
         height: auto;
-        padding-top: 25px;
-        padding-bottom: 25px;
+
         padding-left: 21px;
         padding-right: 21px;
       }
@@ -100,8 +100,7 @@
         width: 100%;
         left: 0;
         text-align: center;
-        margin-bottom: 14px;
-        margin-top: 14px;
+        margin: 14px 0px;
         font-family: "montserrat", sans-serif;
         font-weight: 400;
         font-style: normal;
@@ -117,7 +116,7 @@
           <img
             alt="Logo"
             class="d-inline-block align-text-top"
-            height="24"
+            height="30"
             src="assets/logo.png"
             width="42"
           />
@@ -130,7 +129,7 @@
         <div class="col-md-6">
           <div class="form-box">
             <div class="mb-3 text-center">
-              <h2 style="font-size: 32px; margin: 32px 0">Sign Up</h2>
+              <h2 style="font-size: 32px; margin: 25px 0">Sign Up</h2>
             </div>
             <form
               (ngSubmit)="onSignUp($event)"

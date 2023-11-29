@@ -6,7 +6,7 @@
           src="assets/logo.png"
           alt="Logo"
           width="42"
-          height="24"
+          height="30"
           class="d-inline-block align-text-top"
         />
         UTCodeJest
@@ -28,34 +28,31 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a
-            class="nav-link"
-            [ngClass]="{ selected: questionActive }"
-            routerLink="/question"
+          <a class="nav-link" routerLink="/question" routerLinkActive="selected"
             >Questions</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/forum">Forum</a>
+          <a class="nav-link" routerLink="/forum" routerLinkActive="selected"
+            >Forum</a
+          >
         </li>
 
-        <a class="nav-profile" routerLink="/profile">
+        <li class="nav-item">
           <img
             [src]="userImage"
             alt="profile"
-            width="30"
-            height="30"
             class="circular-image"
-            routerLink="/profile"
+            (click)="toggleDropdown()"
+            role="button"
           />
-        </a>
-
-        <a class="nav-profile" (click)="logout()" routerLink="/">
-          <i
-            style="color: rgba(0, 0, 0, 0.5)"
-            class="fa-solid fa-power-off"
-          ></i>
-        </a>
+          <div class="dropdown-menu" *ngIf="isDropdownVisible">
+            <!-- This will now always be true -->
+            <div class="dropdown-item">{{ userName }}</div>
+            <a class="dropdown-item" routerLink="/profile">View Profile</a>
+            <a class="dropdown-item" routerLink="/">Log Out</a>
+          </div>
+        </li>
       </ul>
     </div>
   </div>

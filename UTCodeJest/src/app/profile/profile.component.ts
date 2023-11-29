@@ -21,7 +21,8 @@ export class ProfileComponent implements OnInit {
   userDetails: any;
   profileImage: any;
   userPosts: any;
-  allUsers: any;
+  allUsers: any = [];
+  network: any = [];
 
   asked = true;
   ngOnInit(): void {
@@ -56,7 +57,16 @@ export class ProfileComponent implements OnInit {
       .subscribe(
         (response) => {
           console.log(response);
+
           this.allUsers = response;
+          for (let net of this.allUsers) {
+            console.log(net);
+
+            if (net.email != this.userDetails.email) {
+              this.network.push(net);
+            }
+          }
+          this.network = this.network.splice(0, 2);
           this.allUsers = this.allUsers.slice(0, 2);
           // Handle success - maybe navigate the user or display a success message
         },

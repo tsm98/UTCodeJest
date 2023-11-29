@@ -1,18 +1,21 @@
-
 .navbar {
   background-color: #fffbfc;
   position: fixed;
   z-index: 10;
- 
+
   margin-bottom: 10px;
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
 }
+.navbar-border {
+  /* Example style - you can customize this */
+  border-bottom: 1px solid #ceced2;
+}
 
 .navbar-brand {
   border-color: #ceced2;
-  
+
   width: 100%;
   left: 0;
   text-align: left;
@@ -42,7 +45,7 @@
 }
 
 .btn-link {
-  color: #D40839;
+  color: #d40839;
   font-family: "montserrat", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -78,8 +81,6 @@
   font-style: normal;
 }
 
-
-
 .label {
   color: #999797;
   font-size: 16px;
@@ -103,9 +104,10 @@
   /* margin-left: 300px;
       width: 50%;
       margin-right: 150px; */
-  width: calc(100% - 775px);
+  margin-right: auto;
+  width: calc(100% - 870px);
   /* adjust as needed */
-  margin-left: 300px;
+  margin-left: 200px;
 }
 
 .search-bar input {
@@ -120,7 +122,7 @@ input[type="search"]::placeholder {
 
 input.nosubmit {
   border: none;
-  width: 290%;
+  width: 260%;
   /* change the width of cancel bar */
   padding: 1px 1px 1px 40px;
   background: transparent
@@ -133,6 +135,7 @@ input.nosubmit {
   font-weight: 400;
   font-style: normal;
   margin-right: 55px;
+  position: relative;
 }
 
 .nav-profile {
@@ -157,6 +160,9 @@ input.nosubmit {
 
   .navbar .container-fluid {
     flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 
@@ -306,7 +312,56 @@ hr {
 
 .circular-image {
   border-radius: 50%;
-  width: 30px;   /* Adjust width as needed */
-  height: 30px;  /* Adjust height as needed */
-  object-fit: cover; /* Optional: for maintaining aspect ratio */
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  cursor: pointer; /* Add cursor pointer to indicate clickable */
+}
+/* Dropdown Menu Styles */
+.dropdown-menu {
+  display: block; /* Make sure the dropdown is always displayed for debugging */
+  position: absolute;
+  top: 100%; /* Position it right below the image */
+  left: 50%; /* Center it horizontally relative to the parent */
+  transform: translateX(-50%); /* Adjust horizontal position */
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 150px; /* Adjust width as needed */
+  z-index: 1000; /* Ensure it's on top */
+}
+/* Styles specific for the first dropdown item (User Name) */
+.dropdown-menu .dropdown-item:first-child {
+  font-family: montserrat;
+  font-weight: 400;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: default; /* Default cursor to indicate non-clickable */
+  pointer-events: none; /* Prevent any click events */
+  background-color: transparent; /* No change in background on hover */
+}
+/* Styles for other dropdown items */
+.dropdown-item {
+  padding: 10px 15px;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+  cursor: pointer; /* Indicate these are clickable */
+}
+.dropdown-item:hover {
+  background-color: #f2f2f2; /* Hover effect for clickable items */
+}
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+/* Ensure dropdown is not clipped */
+.navbar,
+.navbar .container-fluid {
+  overflow: visible;
+}
+.nav-item .nav-link.selected {
+  background-color: #000;
+  color: #fff !important;
+  font-weight: 600;
+  border-radius: 20px;
+  width: 110%;
+  text-align: center;
 }
