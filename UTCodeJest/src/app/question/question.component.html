@@ -662,6 +662,12 @@
           Questions I Asked
           <button
             class="update_block btn btn-light mb-2"
+            *ngIf="userPosts.length == 0"
+          >
+            You have not posted anything yet!
+          </button>
+          <button
+            class="update_block btn btn-light mb-2"
             *ngFor="let userPost of userPosts"
             (click)="viewPost(userPost)"
           >
@@ -686,6 +692,12 @@
 
         <div class="inner-block">
           Questions I Followed
+          <button
+            class="update_block btn btn-light mb-2"
+            *ngIf="followedQuestion.length == 0"
+          >
+            You are not following any posts yet!
+          </button>
           <button
             class="update_block btn btn-light mb-2"
             *ngFor="let post of followedQuestion"
