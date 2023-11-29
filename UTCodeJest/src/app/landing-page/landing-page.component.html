@@ -374,11 +374,36 @@
 
         <!-- Onboarding buttons -->
         <nav id="onboardingNav" class="nav">
-          <a class="nav-link active" href="#onboarding">Onboarding</a>
-          <a class="nav-link" href="#section1">1</a>
-          <a class="nav-link" href="#section2">2</a>
-          <a class="nav-link" href="#section3">3</a>
-          <a class="nav-link" href="#section4">4</a>
+          <a
+            class="nav-link"
+            [class.active]="activeSection === 'onboarding'"
+            href="#onboarding"
+            >Onboarding</a
+          >
+          <a
+            class="nav-link"
+            [class.active]="activeSection === 'section1'"
+            href="#section1"
+            >1</a
+          >
+          <a
+            class="nav-link"
+            [class.active]="activeSection === 'section2'"
+            href="#section2"
+            >2</a
+          >
+          <a
+            class="nav-link"
+            [class.active]="activeSection === 'section3'"
+            href="#section3"
+            >3</a
+          >
+          <a
+            class="nav-link"
+            [class.active]="activeSection === 'section4'"
+            href="#section4"
+            >4</a
+          >
         </nav>
       </div>
     </nav>
