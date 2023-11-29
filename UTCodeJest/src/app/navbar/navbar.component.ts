@@ -39,7 +39,7 @@ export class NavbarComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event'])
   addNavbarBorder() {
-    const navbar = document.querySelector('.navbar') as HTMLElement; // Cast to HTMLElement for type safety
+    const navbar = document.querySelector('.navbar') as HTMLElement;
     if (navbar) {
       // Check if navbar is not null
       if (window.pageYOffset > 0) {
@@ -52,8 +52,6 @@ export class NavbarComponent implements OnInit {
 
   updateActiveState() {
     const currentRoute = this.router.url;
-    // this.questionActive = currentRoute.includes('/question');
-    // this.forumActive = currentRoute.includes('/forum');
     this.profileActive = currentRoute.includes('/profile');
   }
 
@@ -63,8 +61,6 @@ export class NavbarComponent implements OnInit {
 
   setActiveLink() {
     const currentRoute = this.router.url;
-    // this.questionActive = currentRoute === '/question';
-    // this.forumActive = currentRoute === '/forum';
     this.profileActive = currentRoute === '/profile';
   }
 }

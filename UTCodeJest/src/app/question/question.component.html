@@ -652,7 +652,7 @@
 
   <app-navbar label="search"></app-navbar>
 
-  <body>
+  <body class="mt-2">
     <div class="float-container">
       <!--My Updates-->
       <div class="block float-child mt-4" style="position: fixed">
@@ -769,6 +769,7 @@
                 class="col-md-1"
                 [src]="post.user.profileImage"
                 style="border-radius: 50%"
+                alt="profileImage"
               />
               <h5 class="col-md-10 p-1" style="margin-left: 5px">
                 {{ post.title }}
