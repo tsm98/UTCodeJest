@@ -813,14 +813,9 @@
           <button
             class="update_block btn btn-light mb-2"
             *ngFor="let userPost of userPosts"
+            (click)="viewPost(userPost)"
           >
-            <img
-              src="assets/red_dot.png"
-              width="10"
-              height="10"
-              style="align-items: left; margin-top: 5px"
-            />
-            <p
+            <div
               style="
                 text-align: left;
                 font-weight: 600;
@@ -829,84 +824,46 @@
               "
             >
               {{ userPost.title }}
-            </p>
+            </div>
             <p class="ptitle">
               Asked 3 days ago . {{ userPost.comment.length }}
             </p>
           </button>
 
           <span class="sm"></span>
-          <button class="btn btn-show_more show-more-btn">
-            Show more
-            <img
-              src="assets/showmore-Icon.png"
-              alt="Logo"
-              width="24"
-              height="24"
-            />
-          </button>
         </div>
         <hr />
 
         <div class="inner-block">
           Questions I Followed
-          <button class="update_block btn btn-light mb-2">
-            <img
-              src="assets/red_dot.png"
-              width="10"
-              height="10"
-              style="align-items: left; margin-top: 5px"
-            />
-            <p
-              style="
-                text-align: left;
-                font-weight: 600;
-                margin-top: 5px;
-                margin-bottom: 5px;
-              "
-            >
-              Problems with num()
-            </p>
-            <p class="ptitle">Asked 3 days ago . 3 new responses</p>
-          </button>
-
-          <button class="update_block btn btn-light mb-2">
-            <img
-              src="assets/red_dot.png"
-              width="10"
-              height="10"
-              style="float: left; margin-top: 5px"
-            />
-            <p
-              style="
-                text-align: left;
-                font-weight: 600;
-                margin-top: 5px;
-                margin-bottom: 5px;
-              "
-            >
-              Problems with num()
-            </p>
-            <p class="ptitle">Asked 3 days ago . 3 new responses</p>
-          </button>
-          <span class="sm"></span>
           <button
-            class="btn btn-show_more show-more-btn"
-            style="margin-bottom: 0px"
+            class="update_block btn btn-light mb-2"
+            *ngFor="let post of followedQuestion"
+            (click)="viewPost(post)"
           >
-            Show more
-            <img
-              src="assets/showmore-Icon.png"
-              alt="Logo"
-              width="24"
-              height="24"
-            />
+            <p
+              style="
+                text-align: left;
+                font-weight: 600;
+                margin-top: 5px;
+                margin-bottom: 5px;
+              "
+            >
+              {{ post.title }}
+            </p>
+            <p class="ptitle">Asked 3 days ago . 3 new responses</p>
           </button>
         </div>
       </div>
 
       <div class="block2 float-child">
-        <img src="assets/profile.png" alt="profile" width="30" height="30" />
+        <img
+          [src]="userDetails.profileImage"
+          alt="profile"
+          width="30px"
+          height="30px"
+          style="border-radius: 50%"
+        />
 
         <button
           id="AskQuestion"
@@ -923,118 +880,6 @@
           />
           Ask a Question
         </button>
-
-        <!-- <div
-          class="modal"
-          id="AskQuestionModal"
-          tabindex="-1"
-          aria-labelledby="successModalLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="successModalLabel">Success</h5>
-                <span (click)="closeQuestion()">
-                  Ask a question
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img
-                    class="close"
-                    src="assets/remove-circle.png"
-                  />
-                </span>
-              </div>
-              <div class="modal-body">
-                <div class="form-title">
-                  <label for="title">Title</label>
-                  <input
-                    id="title"
-                    type="text"
-                    class="form-inputbox"
-                    [(ngModel)]="postTitle"
-                    name="title"
-                    required
-                  />
-
-                  <label for="description">Description</label>
-                  <textarea
-                    id="description"
-                    class="form-inputbox"
-                    [(ngModel)]="postDescription"
-                    name="description"
-                    required
-                  ></textarea>
-                </div>
-
-                <div>
-                  <label
-                    for="file-upload"
-                    class="file-upload filter btn btn-light"
-                    >Attach files<img src="assets/post add.png" /><input
-                      id="file-upload"
-                      type="file"
-                      (change)="onFileChange($event)"
-                      multiple
-                      style="display: none"
-                  /></label>
-                </div>
-
-                <div>
-                  <label
-                    for="media-upload"
-                    class="media-upload filter btn btn-light"
-                    >Attach media<img src="assets/image-rectangle.png" />
-                    <input
-                      id="media-upload"
-                      type="file"
-                      (change)="onMediaChange($event)"
-                      accept="image/*,video/*"
-                      multiple
-                      style="display: none"
-                  /></label>
-                </div>
-
-                <div class="dropdown hidden">
-                  <label for="tags">Tags</label>
-
-                  <div class="form-title">
-                    <input
-                      id="tags"
-                      type="text"
-                      (click)="myFunction()"
-                      placeholder="Add tags"
-                      class="form-addtag"
-                      [(ngModel)]="postTags"
-                      name="tags"
-                    />
-                    <div
-                      id="myDropdown"
-                      class="dropdown-content hidden"
-                      *ngIf="isMenuOpened"
-                    >
-                      Frequently used tags
-                      <div class="tag-content">
-                        <div class="tag">HTML</div>
-                        <div class="tag">CSS</div>
-                        <div class="tag">JavaSript</div>
-                        <div class="tag">Angular</div>
-                        <div class="tag">Python</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button
-                  class="filter btn btn-light"
-                  style="font-size: 14px; border-radius: 10px"
-                  (click)="submitPost()"
-                >
-                  Post
-                </button>
-              </div>
-            </div>
-          </div>
-        </div> -->
 
         <div id="AskQuestionModal" class="modal" tabindex="-1" role="dialog">
           <div class="modal-dialog" role="document">
@@ -1084,22 +929,10 @@
                       multiple
                       style="display: none"
                   /></label>
-                </div>
 
-                <!-- <div class="mt-2">
-                  <label
-                    for="media-upload"
-                    class="media-upload filter btn btn-light"
-                    >Attach media<img src="assets/image-rectangle.png" />
-                    <input
-                      id="media-upload"
-                      type="file"
-                      (change)="onMediaChange($event)"
-                      accept="image/*,video/*"
-                      multiple
-                      style="display: none"
-                  /></label>
-                </div> -->
+                  <i *ngIf="selectedFiles" class="ml-2 fa fa-file"></i>
+                  {{ fileNames }}
+                </div>
 
                 <div class="dropdown hidden">
                   <label for="tags">Tags</label>
@@ -1306,6 +1139,7 @@
           <button
             class="filter btn btn-light"
             style="font-size: 14px; border-radius: 10px"
+            routerLink="/question"
           >
             View All
           </button>
@@ -1324,9 +1158,8 @@
             <div class="question_title row">
               <img
                 class="col-md-1 px-4"
-                src="assets/david.png"
-                width="30"
-                height="30"
+                [src]="post.user.profileImage"
+                style="border-radius: 50%"
               />
               <h5 class="col-md-10 p-1" style="margin-left: 5px">
                 {{ post.title }}

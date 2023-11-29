@@ -544,28 +544,10 @@
                   display: inline-flex;
                 "
               >
-                <div
-                  style="
-                    padding-left: 16px;
-                    padding-right: 16px;
-                    padding-top: 8px;
-                    padding-bottom: 8px;
-                    background: #000000;
-                    border-radius: 9999px;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 10px;
-                    display: flex;
-                  "
-                >
+                <div [ngClass]="asked ? 'asked' : 'followed'">
                   <div
-                    style="
-                      color: #ffffff;
-                      font-size: 16px;
-                      font-family: Montserrat;
-                      font-weight: 600;
-                      word-wrap: break-word;
-                    "
+                    [ngClass]="asked ? 'asked-text' : 'followed-text'"
+                    (click)="toggleAsked('a')"
                   >
                     Questions I Asked
                   </div>
@@ -577,106 +559,82 @@
                     display: flex;
                   "
                 >
-                  <div
-                    style="
-                      padding-left: 12px;
-                      padding-right: 12px;
-                      padding-top: 8px;
-                      padding-bottom: 8px;
-                      border-bottom: 1px solid;
-                      justify-content: center;
-                      align-items: center;
-                      gap: 10px;
-                      display: flex;
-                    "
-                  >
+                  <div [ngClass]="!asked ? 'asked' : 'followed'">
                     <div
-                      style="
-                        color: #0a192b;
-                        font-size: 16px;
-                        font-family: Montserrat;
-                        font-weight: 400;
-                        word-wrap: break-word;
-                      "
+                      [ngClass]="!asked ? 'asked-text' : 'followed-text'"
+                      (click)="toggleAsked('f')"
                     >
                       Questions I Followed
                     </div>
                   </div>
                 </div>
               </div>
-              <div
-                style="
-                  align-self: stretch;
-                  height: 156px;
-                  padding: 12px;
-                  background: rgba(206, 206, 210, 0.12);
-                  border-radius: 12px;
-                  overflow: hidden;
-                  border: 1px #ceced2 solid;
-                  flex-direction: column;
-                  justify-content: flex-start;
-                  align-items: flex-start;
-                  gap: 8px;
-                  display: flex;
-                "
-                *ngFor="let post of userPosts"
-                (click)="viewPost(post)"
-              >
-                <div
-                  style="
-                    justify-content: flex-start;
-                    align-items: center;
-                    gap: 8px;
-                    display: inline-flex;
-                  "
-                >
-                  <div
-                    style="
-                      width: 392px;
-                      align-self: stretch;
-                      color: #0a192b;
-                      font-size: 16px;
-                      font-family: Montserrat;
-                      font-weight: 600;
-                      word-wrap: break-word;
-                      margin-left: 1%;
-                    "
-                  >
-                    {{ post.title }}
-                  </div>
-                </div>
-                <div
-                  style="
-                    height: 32px;
-                    color: black;
-                    font-size: 14px;
-                    font-family: roboto;
-                    font-weight: 400;
-                    word-wrap: break-word;
-                    margin-left: 0.5%;
-                  "
-                >
-                  {{ post.description }}
-                </div>
+              <div *ngIf="asked">
                 <div
                   style="
                     align-self: stretch;
-                    padding-top: 5px;
-                    padding-bottom: 5px;
+                    height: 156px;
+                    padding: 12px;
+                    background: rgba(206, 206, 210, 0.12);
+                    border-radius: 12px;
+                    overflow: hidden;
+                    border: 1px #ceced2 solid;
+                    flex-direction: column;
                     justify-content: flex-start;
                     align-items: flex-start;
                     gap: 8px;
-                    display: inline-flex;
+                    display: flex;
                   "
+                  *ngFor="let post of userPosts"
+                  (click)="viewPost(post)"
+                  class="mb-3"
                 >
                   <div
                     style="
                       justify-content: flex-start;
+                      align-items: center;
+                      gap: 8px;
+                      display: inline-flex;
+                    "
+                  >
+                    <div
+                      style="
+                        width: 392px;
+                        align-self: stretch;
+                        color: #0a192b;
+                        font-size: 16px;
+                        font-family: Montserrat;
+                        font-weight: 600;
+                        word-wrap: break-word;
+                        margin-left: 1%;
+                      "
+                    >
+                      {{ post.title }}
+                    </div>
+                  </div>
+                  <div
+                    style="
+                      height: 32px;
+                      color: black;
+                      font-size: 14px;
+                      font-family: roboto;
+                      font-weight: 400;
+                      word-wrap: break-word;
+                      margin-left: 0.5%;
+                    "
+                  >
+                    {{ post.description }}
+                  </div>
+                  <div
+                    style="
+                      align-self: stretch;
+                      padding-top: 5px;
+                      padding-bottom: 5px;
+                      justify-content: flex-start;
                       align-items: flex-start;
                       gap: 8px;
-                      display: flex;
+                      display: inline-flex;
                     "
-                    *ngFor="let tag of post.tags"
                   >
                     <div
                       style="
@@ -685,59 +643,209 @@
                         gap: 8px;
                         display: flex;
                       "
+                      *ngFor="let tag of post.tags"
                     >
                       <div
                         style="
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 4px;
-                          padding-bottom: 4px;
-                          background: rgba(228, 45, 85, 0.15);
-                          border-radius: 6px;
-                          justify-content: center;
-                          align-items: center;
-                          gap: 10px;
+                          justify-content: flex-start;
+                          align-items: flex-start;
+                          gap: 8px;
                           display: flex;
                         "
                       >
                         <div
                           style="
-                            color: #d40839;
-                            font-size: 14px;
-                            font-family: roboto;
-                            font-weight: 400;
-                            word-wrap: break-word;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 4px;
+                            padding-bottom: 4px;
+                            background: rgba(228, 45, 85, 0.15);
+                            border-radius: 6px;
+                            justify-content: center;
+                            align-items: center;
+                            gap: 10px;
+                            display: flex;
                           "
                         >
-                          {{ tag }}
+                          <div
+                            style="
+                              color: #d40839;
+                              font-size: 14px;
+                              font-family: roboto;
+                              font-weight: 400;
+                              word-wrap: break-word;
+                            "
+                          >
+                            {{ tag }}
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
+                  <div
+                    style="
+                      padding-left: 6px;
+                      padding-right: 6px;
+                      padding-top: 2px;
+                      padding-bottom: 2px;
+                      border-radius: 6px;
+                      justify-content: center;
+                      align-items: center;
+                      gap: 10px;
+                      display: inline-flex;
+                    "
+                  >
+                    <div
+                      style="
+                        color: rgba(10, 25, 43, 0.65);
+                        font-size: 12px;
+                        font-family: roboto;
+                        font-weight: 400;
+                        word-wrap: break-word;
+                      "
+                    >
+                      Asked 3 days ago
+                    </div>
+                  </div>
                 </div>
+              </div>
+              <div *ngIf="!asked">
                 <div
                   style="
-                    padding-left: 6px;
-                    padding-right: 6px;
-                    padding-top: 2px;
-                    padding-bottom: 2px;
-                    border-radius: 6px;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 10px;
-                    display: inline-flex;
+                    align-self: stretch;
+                    height: 156px;
+                    padding: 12px;
+                    background: rgba(206, 206, 210, 0.12);
+                    border-radius: 12px;
+                    overflow: hidden;
+                    border: 1px #ceced2 solid;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    gap: 8px;
+                    display: flex;
                   "
+                  *ngFor="let post of followedQuestion"
+                  (click)="viewPost(post)"
+                  class="mb-3"
                 >
                   <div
                     style="
-                      color: rgba(10, 25, 43, 0.65);
-                      font-size: 12px;
+                      justify-content: flex-start;
+                      align-items: center;
+                      gap: 8px;
+                      display: inline-flex;
+                    "
+                  >
+                    <div
+                      style="
+                        width: 392px;
+                        align-self: stretch;
+                        color: #0a192b;
+                        font-size: 16px;
+                        font-family: Montserrat;
+                        font-weight: 600;
+                        word-wrap: break-word;
+                        margin-left: 1%;
+                      "
+                    >
+                      {{ post.title }}
+                    </div>
+                  </div>
+                  <div
+                    style="
+                      height: 32px;
+                      color: black;
+                      font-size: 14px;
                       font-family: roboto;
                       font-weight: 400;
                       word-wrap: break-word;
+                      margin-left: 0.5%;
                     "
                   >
-                    Asked 3 days ago
+                    {{ post.description }}
+                  </div>
+                  <div
+                    style="
+                      align-self: stretch;
+                      padding-top: 5px;
+                      padding-bottom: 5px;
+                      justify-content: flex-start;
+                      align-items: flex-start;
+                      gap: 8px;
+                      display: inline-flex;
+                    "
+                  >
+                    <div
+                      style="
+                        justify-content: flex-start;
+                        align-items: flex-start;
+                        gap: 8px;
+                        display: flex;
+                      "
+                      *ngFor="let tag of post.tags"
+                    >
+                      <div
+                        style="
+                          justify-content: flex-start;
+                          align-items: flex-start;
+                          gap: 8px;
+                          display: flex;
+                        "
+                      >
+                        <div
+                          style="
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 4px;
+                            padding-bottom: 4px;
+                            background: rgba(228, 45, 85, 0.15);
+                            border-radius: 6px;
+                            justify-content: center;
+                            align-items: center;
+                            gap: 10px;
+                            display: flex;
+                          "
+                        >
+                          <div
+                            style="
+                              color: #d40839;
+                              font-size: 14px;
+                              font-family: roboto;
+                              font-weight: 400;
+                              word-wrap: break-word;
+                            "
+                          >
+                            {{ tag }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    style="
+                      padding-left: 6px;
+                      padding-right: 6px;
+                      padding-top: 2px;
+                      padding-bottom: 2px;
+                      border-radius: 6px;
+                      justify-content: center;
+                      align-items: center;
+                      gap: 10px;
+                      display: inline-flex;
+                    "
+                  >
+                    <div
+                      style="
+                        color: rgba(10, 25, 43, 0.65);
+                        font-size: 12px;
+                        font-family: roboto;
+                        font-weight: 400;
+                        word-wrap: break-word;
+                      "
+                    >
+                      Asked 3 days ago
+                    </div>
                   </div>
                 </div>
               </div>

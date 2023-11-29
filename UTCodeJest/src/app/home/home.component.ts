@@ -23,6 +23,10 @@ export class HomeComponent implements OnInit {
   allPosts: any;
   userForPosts: any;
   userPosts: any;
+  fileNames: any;
+  userDetails: any;
+  followedQuestion: any = [];
+
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -32,7 +36,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.userService.getUser());
-    let userDetails = this.userService.getUser();
+    this.userDetails = this.userService.getUser();
     this.userEmail = this.userService.getUser()?.email;
 
     this.userForPosts = {
@@ -42,7 +46,7 @@ export class HomeComponent implements OnInit {
     this.getAllPosts(this.userForPosts);
 
     let userData = {
-      email: userDetails?.email,
+      user: this.userDetails,
     };
 
     this.http
@@ -71,8 +75,19 @@ export class HomeComponent implements OnInit {
       )
       .subscribe(
         (response) => {
-          console.log(response);
           this.allPosts = response;
+
+          this.allPosts.filter((post: any) => {
+            for (let comment of post.comment) {
+              console.log(comment.user.email);
+              console.log(this.userEmail);
+
+              if (comment.user.email == this.userEmail) {
+                this.followedQuestion.push(post);
+                console.log(comment);
+              }
+            }
+          });
         },
         (error) => {
           console.error(error);
@@ -85,6 +100,7 @@ export class HomeComponent implements OnInit {
     let fileList: FileList | null = element.files;
     if (fileList) {
       this.selectedFiles = fileList;
+      this.fileNames = Array.from(this.selectedFiles).map((file) => file.name);
     }
   }
 
@@ -118,14 +134,14 @@ export class HomeComponent implements OnInit {
     // Here you will handle the form submission.
     // This typically involves preparing the data and sending it to a backend server.
     this.convertToBase64(this.selectedFiles);
-
+    let userData = {};
     setTimeout(() => {
-      const userData = {
+      userData = {
         postTitle: this.postTitle,
         postDescription: this.postDescription,
         postTags: this.postTags.split(','),
         file: this.base64String?.toString(),
-        userEmail: this.userEmail,
+        user: this.userDetails,
         likes: 0,
       };
 
@@ -133,6 +149,7 @@ export class HomeComponent implements OnInit {
         .post('https://nutritious-flax-squid.glitch.me/api/posts', userData)
         .subscribe(
           (response) => {
+            console.log(userData);
             console.log(response);
             this.closePostModal();
             this.showSuccessModal();
@@ -142,8 +159,6 @@ export class HomeComponent implements OnInit {
             console.error(error);
           }
         );
-
-      console.log(userData.file);
     }, 1000);
   }
 

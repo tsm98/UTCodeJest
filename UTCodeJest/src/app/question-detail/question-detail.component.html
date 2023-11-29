@@ -30,6 +30,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
 
     <style>
       /* CSS Style Sheet */
@@ -631,7 +635,7 @@
         width: 600px;
         height: 30px;
         border-radius: 12px;
-        border: 1px solid var(--border, #ceced2);
+
         background: #fff;
       }
 
@@ -736,15 +740,12 @@
         <hr />
         <div class="inner-block">
           Questions I Asked
-          <button class="update_block btn btn-light mb-2">
-            <img
-              src="assets/red_dot.png"
-              alt="pink dot indicating new updates in My Updates- Questions I Asked"
-              width="10"
-              height="10"
-              style="align-items: left; margin-top: 5px"
-            />
-            <p
+          <button
+            class="update_block btn btn-light mb-2"
+            *ngFor="let userPost of userPosts"
+            (click)="viewPost(userPost)"
+          >
+            <div
               style="
                 text-align: left;
                 font-weight: 600;
@@ -752,55 +753,24 @@
                 margin-bottom: 5px;
               "
             >
-              Problems with num()
+              {{ userPost.title }}
+            </div>
+            <p class="ptitle">
+              Asked 3 days ago . {{ userPost.comment.length }}
             </p>
-            <p class="ptitle">Asked 3 days ago . 3 new responses</p>
           </button>
 
-          <button class="update_block btn btn-light mb-2">
-            <img
-              src="assets/red_dot.png"
-              alt="pink dot indicating new updates in My Updates- Questions I Asked"
-              width="10"
-              height="10"
-              style="align-items: left; margin-top: 5px"
-            />
-            <p
-              style="
-                text-align: left;
-                font-weight: 600;
-                margin-top: 5px;
-                margin-bottom: 5px;
-              "
-            >
-              Problems with num()
-            </p>
-            <p class="ptitle">Asked 3 days ago . 3 new responses</p>
-          </button>
-          <span class="sm">
-            <button class="btn btn-show_more show-more-btn">
-              Show more
-              <img
-                src="assets/showmore-Icon.png"
-                alt="arrow for show more button"
-                width="24"
-                height="24"
-              />
-            </button>
-          </span>
+          <span class="sm"></span>
         </div>
         <hr />
 
         <div class="inner-block">
           Questions I Followed
-          <button class="update_block btn btn-light mb-2">
-            <img
-              src="assets/red_dot.png"
-              alt="pink dot indicating new updates in My Updates- Questions I Followed"
-              width="10"
-              height="10"
-              style="align-items: left; margin-top: 5px"
-            />
+          <button
+            class="update_block btn btn-light mb-2"
+            *ngFor="let post of followedQuestion"
+            (click)="viewPost(post)"
+          >
             <p
               style="
                 text-align: left;
@@ -809,45 +779,10 @@
                 margin-bottom: 5px;
               "
             >
-              Problems with num()
+              {{ post.title }}
             </p>
             <p class="ptitle">Asked 3 days ago . 3 new responses</p>
           </button>
-
-          <button class="update_block btn btn-light mb-2">
-            <img
-              src="assets/red_dot.png"
-              alt="pink dot indicating new updates in My Updates- Questions I Followed"
-              width="10"
-              height="10"
-              style="align-items: left; margin-top: 5px"
-            />
-            <p
-              style="
-                text-align: left;
-                font-weight: 600;
-                margin-top: 5px;
-                margin-bottom: 5px;
-              "
-            >
-              Problems with num()
-            </p>
-            <p class="ptitle">Asked 3 days ago . 3 new responses</p>
-          </button>
-          <span class="sm">
-            <button
-              class="btn btn-show_more show-more-btn"
-              style="margin-bottom: 0px"
-            >
-              Show more
-              <img
-                src="assets/showmore-Icon.png"
-                alt="arrow for show more button"
-                width="24"
-                height="24"
-              />
-            </button>
-          </span>
         </div>
       </div>
 
@@ -856,8 +791,11 @@
           {{ currPost.title }}
           <p class="ptitle">Posted 3 days ago</p>
         </div>
-        <div *ngFor="let tag of currPost.tags" class="titletags">
-          <button class="questiontype_block btn btn-light mb-2 button-inactive">
+        <div class="titletags">
+          <button
+            *ngFor="let tag of currPost.tags"
+            class="questiontype_block btn btn-light mb-2 button-inactive"
+          >
             {{ tag }}
           </button>
         </div>
@@ -869,6 +807,7 @@
             *ngIf="getFileType(currPost.file) === 'image'"
             [src]="sanitizedUrl(currPost.file)"
             alt="Image Preview"
+            class="mt-3"
           />
 
           <object
@@ -889,24 +828,19 @@
             Unknown file type.
           </div>
         </div>
-        <hr style="margin: 10px; margin-left: 0px" />
 
-        <div class="like-post">
-          <div class="like-post">
-            <button class="btn" (click)="likePost()">
-              <i
-                *ngIf="isLiked == true"
-                class="fas fa-thumbs-up like-icon liked"
-              ></i>
-              <i
-                *ngIf="isLiked == false"
-                class="fas fa-thumbs-up like-icon"
-              ></i>
-            </button>
-
-            <span>{{ likeCount }}</span>
-          </div>
+        <!-- Container for the icon -->
+        <div class="row mt-3">
+          <button
+            style="border: none; background: transparent"
+            (click)="toggleLike()"
+            id="likeIconContainer"
+            class="col-1 pr-1"
+          ></button>
+          <span class="col-1 pl-0">{{ totalLikes }}</span>
         </div>
+
+        <hr style="margin: 10px; margin-left: 0px" />
 
         <div class="comment">
           <div>
@@ -914,10 +848,11 @@
             Comments
             <div class="makecomment">
               <img
-                src="assets/profile.png"
+                [src]="currUser.profileImage"
                 alt="profile image for current logged-in user. This image is next to the comment input field."
                 width="30"
                 height="30"
+                style="border-radius: 50%"
               />
               <form (ngSubmit)="addComment()" class="submit">
                 <input
@@ -926,34 +861,37 @@
                   class="submit"
                   type="text"
                   placeholder="Add your comments"
+                  style="border: 1px solid black"
                 />
-                <button type="submit">Post</button>
+                <button
+                  type="button"
+                  class="ml-3 d-flex align-items-center btn btn-success"
+                  style="padding-top: 15px"
+                >
+                  <p class="mb-2">Post</p>
+                </button>
               </form>
             </div>
           </div>
-          <button class="filter btn btn-light">
-            Most Recent
-            <img
-              src="assets/showmore-Icon.png"
-              alt="arrow for Most Popular button that works as filter to show relevant comments under the question-detail image."
-              width="24"
-              height="24"
-              style="margin-left: 8px"
-            />
-          </button>
         </div>
 
         <!-- Dynamic comments section -->
-        <div *ngFor="let comment of comments; let i = index">
+        <div class="mb-3" *ngFor="let comment of comments; let i = index">
           <div class="othercomment">
-            <img src="assets/profile.png" width="30" height="30" />
+            <img
+              [src]="comment.user.profileImage"
+              width="30"
+              height="30"
+              style="border-radius: 50%"
+            />
           </div>
-          <div class="comments_block2 btn button-inactive2" role="button">
+          <div
+            class="comments_block2 btn button-inactive2"
+            role="button"
+            style="height: 50px"
+          >
             <div class="inner_comments_block2">
               <p class="content">{{ comment.text }}</p>
-              <p class="ptitle2">
-                Posted {{ comments.length - comment.order + 1 }} min ago
-              </p>
               <!-- Reverse the order for comment.order -->
             </div>
           </div>

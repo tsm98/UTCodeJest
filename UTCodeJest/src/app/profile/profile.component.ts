@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
+  allPosts: any;
+  followedQuestion: any = [];
   constructor(
     private userService: UserService,
     private http: HttpClient,
@@ -21,6 +23,7 @@ export class ProfileComponent implements OnInit {
   userPosts: any;
   allUsers: any;
 
+  asked = true;
   ngOnInit(): void {
     this.userDetails = this.userService.getUser();
     // console.log(this.userDetails);
@@ -28,7 +31,7 @@ export class ProfileComponent implements OnInit {
     console.log(this.profileImage);
 
     let userData = {
-      email: this.userDetails.email,
+      user: this.userDetails,
     };
 
     this.http
@@ -62,6 +65,33 @@ export class ProfileComponent implements OnInit {
           // Handle error - maybe display an error message to the user
         }
       );
+
+    this.getAllPosts(this.userDetails);
+  }
+
+  getAllPosts(userForPosts: any) {
+    this.http
+      .post(
+        'https://nutritious-flax-squid.glitch.me/api/posts/getAllPosts',
+        userForPosts
+      )
+      .subscribe(
+        (response) => {
+          this.allPosts = response;
+
+          this.allPosts.filter((post: any) => {
+            for (let comment of post.comment) {
+              if (comment.user.email == this.userDetails.email) {
+                this.followedQuestion.push(post);
+                console.log(comment);
+              }
+            }
+          });
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
   }
 
   viewPost(post: any) {
@@ -69,5 +99,13 @@ export class ProfileComponent implements OnInit {
 
     this.postService.setPost(post);
     this.router.navigate(['/question-detail']);
+  }
+
+  toggleAsked(x: any) {
+    if (x == 'a') {
+      this.asked = true;
+    } else {
+      this.asked = false;
+    }
   }
 }

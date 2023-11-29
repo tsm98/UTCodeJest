@@ -1,0 +1,40 @@
+.asked {
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background: #000000;
+  border-radius: 9999px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+}
+
+.asked-text {
+  color: #ffffff;
+  font-size: 16px;
+  font-family: Montserrat;
+  font-weight: 600;
+  word-wrap: break-word;
+}
+
+.followed {
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+}
+
+.followed-text {
+  color: #0a192b;
+  font-size: 16px;
+  font-family: Montserrat;
+  font-weight: 400;
+  word-wrap: break-word;
+}
